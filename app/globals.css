@@ -12,6 +12,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-black-ops: var(--black-ops-one);
+  --font-orbitron: var(--font-orbitron);
+  --font-aref-ruqaa: var(--aref-ruqaa);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,4 +34,24 @@ body {
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
+}
+
+.hero-grid {
+  z-index: 0;
+  pointer-events: none;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(54, 54, 54, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(54, 54, 54, 0.08) 1px, transparent 1px);
+  background-size: 10px 10px;
+
+  /* mask-image: radial-gradient(ellipse at center, black 45%, transparent 80%); */
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 70%,
+    transparent 90%
+  );
 }

@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Black_Ops_One } from "next/font/google";
+import { Black_Ops_One, Orbitron, Aref_Ruqaa } from "next/font/google";
 import "./globals.css";
 import Nav from "./Components/Layout/Nav";
 import Footer from "./Components/Layout/Footer";
 import Spacer from "./Components/Sections/Spacer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
   subsets: ["latin"],
 });
 
@@ -19,6 +14,12 @@ const blackOps = Black_Ops_One({
   weight: "400",
   subsets: ["latin"],
   variable: "--black-ops-one",
+});
+
+const arefRuqaa = Aref_Ruqaa({
+  weight: "400",
+  subsets: ["arabic"],
+  variable: "--aref-ruqaa",
 });
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${blackOps.variable} h-full antialiased`}
+      className={`${orbitron.variable} ${blackOps.variable} ${arefRuqaa.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Nav />

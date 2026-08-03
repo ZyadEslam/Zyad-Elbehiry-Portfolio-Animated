@@ -5,14 +5,14 @@ import Intro from "./Components/Sections/Intro";
 import PersonalInfo from "./Components/Sections/PersonalInfo";
 
 export default function Home() {
-  const [introDone, setIntroDone] = useState(false);
+  // const [introDone, setIntroDone] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = introDone ? "" : "hidden";
-  }, [introDone]);
+  // useEffect(() => {
+  //   document.body.style.overflow = introDone ? "" : "hidden";
+  // }, [introDone]);
   return (
     <>
-      {!introDone && <Intro onComplete={() => setIntroDone(true)} />}
+      {/* {!introDone && <Intro onComplete={() => setIntroDone(true)} />} */}
       <Hero autoPlay={true} />
       <PersonalInfo/>
     </>

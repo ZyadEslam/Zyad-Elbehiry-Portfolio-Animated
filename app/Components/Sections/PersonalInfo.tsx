@@ -39,13 +39,13 @@ const PersonalInfo = () => {
       <h1 className="font-serif text-6xl leading-[0.95] text-text-primary tracking-tight md:text-8xl">
         <span
           ref={headingLine1}
-          className="block -translate-y-6 font-light italic opacity-0"
+          className="block -translate-y-6 font-semibold opacity-0 font-orbitron"
         >
           Frontend
         </span>
         <span
           ref={headingLine2}
-          className="block -translate-y-6 font-semibold opacity-0"
+          className="block -translate-y-6 opacity-0 font-orbitron"
         >
           Developer.
         </span>

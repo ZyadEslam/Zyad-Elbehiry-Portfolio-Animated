@@ -1,28 +1,131 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
+const navLinks = ["About", "Projects", "Services", "Contact"];
+
 const Nav = () => {
-  const navLinks = ["Work", "About", "Contact"];
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const isMenuVisible = menuOpen && !scrolled;
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > window.innerHeight * 0.8);
+      if (!isMenuVisible) {
+        setMenuOpen(false);
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between text-text-primary px-6 py-6 md:px-12">
-      <span className="text-sm uppercase tracking-widest">Zyad Elbehiry</span>
+    <>
+      {/* Top pill — visible while inside the hero */}
+      <div
+        className={`fixed inset-x-0 top-4 z-50 mx-auto flex max-w-[80%] text-text-primary items-center justify-between rounded-full bg-white px-6 py-2 font-orbitron shadow-lg transition-opacity duration-500 md:px-12 ${
+          scrolled ? "pointer-events-none opacity-0" : "opacity-100"
+        }`}
+      >
+        <span
+          dir="rtl"
+          className="font-aref-ruqaa text-sm uppercase tracking-widest"
+        >
+          زياد البحيري
+        </span>
 
-      <nav className="gap-8 text-sm uppercase tracking-widest md:flex">
-        {navLinks.map((link) => (
-          <Link
-            key={link}
-            href={`#${link.toLowerCase()}`}
-            className="transition-opacity hover:opacity-60"
+        <nav className="hidden gap-8 text-sm uppercase tracking-widest md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="transition-opacity hover:opacity-60"
+            >
+              {link}
+            </Link>
+          ))}
+        </nav>
+
+        <span className="hidden rounded-full border border-[#222222]/30 px-3 py-1 text-xs uppercase tracking-widest md:inline-block">
+          Available for work
+        </span>
+
+        {/* Hamburger — mobile only */}
+        <button
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          className="flex flex-col gap-1.5 md:hidden"
+        >
+          <span
+            className={`h-px w-5 bg-[#222222] transition-transform duration-300 ${
+              menuOpen ? "translate-y-1.5 rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`h-px w-5 bg-[#222222] transition-opacity duration-300 ${
+              menuOpen ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`h-px w-5 bg-[#222222] transition-transform duration-300 ${
+              menuOpen ? "-translate-y-1.5 -rotate-45" : ""
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Bottom dock — compact nav that cross-fades in once scrolled past the hero */}
+      <div
+        className={`fixed inset-x-0 bottom-4 text-text-primary z-50 mx-auto flex w-fit  items-center gap-6 rounded-full bg-white px-5 py-2 font-orbitron shadow-lg transition-opacity duration-500 ${
+          scrolled ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <nav className="gap-6 text-xs uppercase tracking-widest flex items-center ">
+          <span
+            dir="rtl"
+            className="font-aref-ruqaa text-sm uppercase tracking-widest"
           >
-            {link}
-          </Link>
-        ))}
-      </nav>
+            زياد البحيري
+          </span>
+          {navLinks.map((link) => (
+            <Link
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="transition-opacity hover:opacity-60 text-[2vw] md:text-sm"
+            >
+              {link}
+            </Link>
+          ))}
+        </nav>
+      </div>
 
-      <span className="rounded-full border border-[#222222]/30 px-3 py-1 text-xs uppercase tracking-widest">
-        Available for work
-      </span>
-    </div>
+      {/* Mobile dropdown — anchored near whichever nav is currently visible */}
+      {isMenuVisible && (
+        <div
+          className={`fixed inset-x-0 text-text-primary z-40 mx-auto flex w-fit flex-col items-center gap-4 rounded-2xl bg-white px-8 py-6 text-sm uppercase tracking-widest shadow-lg transition-all duration-300 md:hidden ${
+            menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          } ${scrolled ? "bottom-20" : "top-20"}`}
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              onClick={() => setMenuOpen(false)}
+              className="transition-opacity hover:opacity-60"
+            >
+              {link}
+            </Link>
+          ))}
+          <span className="rounded-full border border-[#222222]/30 px-3 py-1 text-xs">
+            Available for work
+          </span>
+        </div>
+      )}
+    </>
   );
 };
 
