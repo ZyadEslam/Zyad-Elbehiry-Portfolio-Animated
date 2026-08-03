@@ -7,9 +7,8 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(SplitText);
 
-type IntroProps = { onComplete?: () => void };
+type IntroProps = { onReveal?: () => void; onComplete?: () => void };
 
-// Swap these for your own copy.
 const name = "Zyad Eslam Hamdy Abdelghaffar";
 
 const phrases = ["Frontend Developer", "Based in Egypt"];
@@ -43,13 +42,13 @@ export default function Intro({ onComplete }: IntroProps) {
       tl.to(splittedName.words, {
         yPercent: 0,
         opacity: 1,
-        duration: 0.5,
-        stagger: 0.4,
+        duration: 0.4,
+        stagger: 0.3,
         ease: "elastic.inOut",
       }).to(
         splittedName.words,
-        { yPercent: -200, duration: 0.3, ease: "power3.inOut" },
-        "+=0.55"
+        { yPercent: -200, duration: 0.2, ease: "power3.inOut" },
+        "+=0.5"
       );
 
       // Each info line: mask up, hold, mask out
@@ -101,7 +100,7 @@ export default function Intro({ onComplete }: IntroProps) {
   return (
     <div
       ref={container}
-      className="fixed inset-0 z-50 h-screen w-full overflow-hidden bg-[#f8f8f8]"
+      className="fixed inset-0 z-50 h-screen w-full overflow-hidden"
     >
       {/* Top panel */}
       <div
@@ -146,7 +145,7 @@ export default function Intro({ onComplete }: IntroProps) {
           ))}
 
           <p
-            className="absolute inset-0 flex invisible items-center justify-center text-2xl md:text-4xl font-light tracking-wide"
+            className="absolute inset-0 flex invisible items-center justify-center text-2xl md:text-4xl font-light tracking-widest"
             ref={nameRef}
           >
             {name}
