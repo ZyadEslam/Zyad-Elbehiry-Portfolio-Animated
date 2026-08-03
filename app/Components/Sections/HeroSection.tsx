@@ -84,7 +84,7 @@ const Hero = forwardRef<HeroHandle, HeroProps>(({ autoPlay = true }, ref) => {
           width={700}
           height={900}
           priority
-          className="h-full w-full object-contain absolute "
+          className="h-full w-full object-cover md:object-contain "
         />
       </div>
     </section>
