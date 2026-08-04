@@ -1,8 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Hero from "./Components/Sections/HeroSection";
 import Intro from "./Components/Sections/Intro";
-import PersonalInfo from "./Components/Sections/PersonalInfo";
+import About from "./Components/Sections/AboutSection";
+import TitlesMarquee from "./Components/Sections/TitlesMarquee";
+import AnimationLab from "./Components/Animations/AnimationLab/AnimationLab";
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false);
@@ -13,8 +15,14 @@ export default function Home() {
   return (
     <>
       {!introDone && <Intro onComplete={() => setIntroDone(true)} />}
-      <Hero autoPlay={true} />
-      <PersonalInfo/>
+      <div className="relative">
+        <div className="sticky top-0 -z-10 h-screen overflow-hidden">
+          <Hero />
+        </div>
+        <About />
+      </div>
+      <TitlesMarquee />
+      {/* <AnimationLab /> */}
     </>
   );
 }
