@@ -94,7 +94,7 @@ const Nav = () => {
 
       {/* Bottom dock — compact nav that cross-fades in once scrolled past the hero */}
       <div
-        className={`fixed inset-x-0 bottom-8 text-text-primary z-50 mx-auto flex w-fit  items-center gap-6 rounded-full bg-white px-5 py-2 font-orbitron shadow-lg transition-opacity duration-500 ${
+        className={`fixed inset-x-0 bottom-8 text-text-primary z-50 mx-auto flex w-fit items-center gap-6 rounded-full bg-white px-3 md:px-5 py-2 font-orbitron shadow-lg transition-opacity duration-500 ${
           scrolled ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -111,7 +111,7 @@ const Nav = () => {
               onClick={() => {
                 scrollToSection(`#${link.toLowerCase()}`);
               }}
-              className="transition-opacity hover:opacity-60 text-[2vw] md:text-sm"
+              className="transition-opacity hover:opacity-60 text-[2.2vw] md:text-sm"
             >
               {link}
             </p>
