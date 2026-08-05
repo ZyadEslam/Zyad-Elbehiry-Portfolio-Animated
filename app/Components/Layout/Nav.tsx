@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import gsap from "gsap";
+import ScrollToPlugin from "gsap/src/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const navLinks = ["About", "Projects", "Services", "Contact"];
 
@@ -9,6 +12,15 @@ const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isMenuVisible = menuOpen && !scrolled;
+
+  const scrollToSection = (id: string) => {
+    gsap.to(window, {
+      duration: 1.2,
+      scrollTo: `${id}`,
+      ease: "power2.inOut",
+      offsetY: -80,
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,15 +49,17 @@ const Nav = () => {
           زياد البحيري
         </span>
 
-        <nav className="hidden gap-8 text-sm uppercase tracking-widest md:flex">
+        <nav className="hidden gap-8 text-sm cursor-pointer uppercase tracking-widest md:flex">
           {navLinks.map((link) => (
-            <Link
+            <p
               key={link}
-              href={`#${link.toLowerCase()}`}
+              onClick={() => {
+                scrollToSection(`#${link.toLowerCase()}`);
+              }}
               className="transition-opacity hover:opacity-60"
             >
               {link}
-            </Link>
+            </p>
           ))}
         </nav>
 
@@ -80,7 +94,7 @@ const Nav = () => {
 
       {/* Bottom dock — compact nav that cross-fades in once scrolled past the hero */}
       <div
-        className={`fixed inset-x-0 bottom-4 text-text-primary z-50 mx-auto flex w-fit  items-center gap-6 rounded-full bg-white px-5 py-2 font-orbitron shadow-lg transition-opacity duration-500 ${
+        className={`fixed inset-x-0 bottom-8 text-text-primary z-50 mx-auto flex w-fit  items-center gap-6 rounded-full bg-white px-5 py-2 font-orbitron shadow-lg transition-opacity duration-500 ${
           scrolled ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -92,13 +106,15 @@ const Nav = () => {
             زياد البحيري
           </span>
           {navLinks.map((link) => (
-            <Link
+            <p
               key={link}
-              href={`#${link.toLowerCase()}`}
+              onClick={() => {
+                scrollToSection(`#${link.toLowerCase()}`);
+              }}
               className="transition-opacity hover:opacity-60 text-[2vw] md:text-sm"
             >
               {link}
-            </Link>
+            </p>
           ))}
         </nav>
       </div>
@@ -111,14 +127,16 @@ const Nav = () => {
           } ${scrolled ? "bottom-20" : "top-20"}`}
         >
           {navLinks.map((link) => (
-            <Link
+            <p
               key={link}
-              href={`#${link.toLowerCase()}`}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                scrollToSection(`#${link.toLowerCase()}`);
+                setMenuOpen(false);
+              }}
               className="transition-opacity hover:opacity-60"
             >
               {link}
-            </Link>
+            </p>
           ))}
           <span className="rounded-full border border-[#222222]/30 px-3 py-1 text-xs">
             Available for work

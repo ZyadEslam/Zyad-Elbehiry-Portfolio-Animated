@@ -32,12 +32,12 @@ const About = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top bottom",
-            end:"bottom bottom",
+            end: "bottom bottom",
             scrub: true,
           },
           defaults: { ease: "power3.out" },
         })
-        .to(aboutWordRef.current, { opacity: 1, x: 100, duration: 1 })
+        .to(aboutWordRef.current, { opacity: 1, x: 0, duration: 1 })
         .to(paraRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
         .to(keywordsRef.current, { opacity: 1, y: 0, duration: 0.3 }, "-=0.4")
         .to(roleRef.current, { opacity: 1, y: 0, duration: 0.3 }, "-=0.3");
@@ -47,6 +47,7 @@ const About = () => {
 
   return (
     <section
+    id="about"
       ref={sectionRef}
       className="relative z-10 min-h-screen rounded-t-[2.5rem] bg-black px-6 py-24 text-white  md:rounded-t-[4rem] md:px-16 md:py-32"
     >
@@ -55,7 +56,7 @@ const About = () => {
         <div className="flex md:w-1/4">
           <span
             ref={aboutWordRef}
-            className="-translate-x-8 font-serif text-7xl leading-none tracking-tight opacity-0  md:-rotate-90 md:text-8xl md:whitespace-nowrap"
+            className="-translate-x-8 p-0 md:p-4 font-serif text-7xl leading-none tracking-tight opacity-0  md:-rotate-90 md:text-8xl md:whitespace-nowrap"
           >
             About
           </span>

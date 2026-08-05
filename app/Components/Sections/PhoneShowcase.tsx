@@ -1,8 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { showcaseSlides, type Direction } from "../../data/showcase";
 
@@ -27,19 +28,18 @@ export default function GsapShowcase() {
   const slideRefs = useRef<HTMLDivElement[]>([]);
   const imgRefs = useRef<HTMLDivElement[]>([]);
   const subtitleRefs = useRef<HTMLDivElement[]>([]);
-  const charRefs = useRef<HTMLSpanElement[][]>(
-    showcaseSlides.map(() => [])
-  );
+  const charRefs = useRef<HTMLSpanElement[][]>(showcaseSlides.map(() => []));
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
+  useGSAP(
+    () => {
       const total = showcaseSlides.length;
       const slot = 1; // arbitrary time unit per slide "turn"
 
       // Starting state for every slide/element, set once up front.
       showcaseSlides.forEach((slide, i) => {
         gsap.set(imgRefs.current[i], {
-          clipPath: i === 0 ? CLIP[slide.direction].to : CLIP[slide.direction].from,
+          clipPath:
+            i === 0 ? CLIP[slide.direction].to : CLIP[slide.direction].from,
           scale: 1.18,
         });
         gsap.set(slideRefs.current[i], { autoAlpha: 1 });
@@ -64,12 +64,10 @@ export default function GsapShowcase() {
           anticipatePin: 1,
           onUpdate: (self) => {
             gsap.set(progressFillRef.current, { scaleY: self.progress });
-            const idx = Math.min(
-              total - 1,
-              Math.floor(self.progress * total)
-            );
+            const idx = Math.min(total - 1, Math.floor(self.progress * total));
             if (counterRef.current?.dataset.idx !== String(idx)) {
-              if (counterRef.current) counterRef.current.dataset.idx = String(idx);
+              if (counterRef.current)
+                counterRef.current.dataset.idx = String(idx);
               gsap.fromTo(
                 counterRef.current,
                 { yPercent: 40, autoAlpha: 0 },
@@ -90,14 +88,24 @@ export default function GsapShowcase() {
           // Reveal: this slide's image wipes open over the previous one.
           tl.to(
             imgRefs.current[i],
-            { clipPath: CLIP[slide.direction].to, duration: 0.42, ease: "power3.inOut" },
+            {
+              clipPath: CLIP[slide.direction].to,
+              duration: 0.42,
+              ease: "power3.inOut",
+            },
             t
           );
 
           // Outgoing slide's headline gets yanked away as the wipe passes.
           tl.to(
             charRefs.current[i - 1],
-            { yPercent: -120, rotateZ: -8, stagger: 0.008, duration: 0.3, ease: "power3.in" },
+            {
+              yPercent: -120,
+              rotateZ: -8,
+              stagger: 0.008,
+              duration: 0.3,
+              ease: "power3.in",
+            },
             t
           ).to(
             subtitleRefs.current[i - 1],
@@ -131,13 +139,16 @@ export default function GsapShowcase() {
         { autoAlpha: 0, duration: 0.25 },
         total * slot - 0.25
       );
-    }, rootRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    { scope: rootRef }
+  );
 
   return (
-    <div ref={rootRef} className="relative bg-black" style={{ height: "100vh" }}>
+    <div
+      ref={rootRef}
+      className="relative bg-black"
+      // style={{ height: "100vh" }}
+    >
       <div
         ref={stageRef}
         className="relative h-screen w-full overflow-hidden bg-black text-[#F5F4EF]"
@@ -181,7 +192,10 @@ export default function GsapShowcase() {
               </div>
               <h2 className="max-w-4xl text-[12vw] font-black uppercase leading-[0.88] tracking-tight md:text-[6.5vw]">
                 {slide.title.split("").map((ch, j) => (
-                  <span key={j} className="inline-block overflow-hidden align-bottom">
+                  <span
+                    key={j}
+                    className="inline-block overflow-hidden align-bottom"
+                  >
                     <span
                       ref={(el) => {
                         if (el) charRefs.current[i][j] = el;

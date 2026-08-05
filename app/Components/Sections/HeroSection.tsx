@@ -35,6 +35,7 @@ const Hero = () => {
 
   return (
     <section
+    id="hero"
       ref={container}
       className="relative flex h-screen w-full items-center justify-center overflow-hidden hero-grid"
     >

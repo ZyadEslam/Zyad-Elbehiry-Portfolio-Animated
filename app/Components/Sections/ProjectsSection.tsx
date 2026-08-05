@@ -72,6 +72,7 @@ export default function ProjectsSection() {
 
   return (
     <section
+    id="projects"
       ref={sectionRef}
       className="relative bg-[#F7F6F2] px-6 py-24 md:px-12 md:py-32"
     >
