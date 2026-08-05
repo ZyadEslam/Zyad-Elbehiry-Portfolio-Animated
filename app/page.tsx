@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Hero from "./Components/Sections/HeroSection";
 import Intro from "./Components/Sections/Intro";
 import About from "./Components/Sections/AboutSection";
 import TitlesMarquee from "./Components/Sections/TitlesMarquee";
-import AnimationLab from "./Components/Animations/AnimationLab/AnimationLab";
+import PhoneShowcase from "./Components/Sections/PhoneShowcase";
+import ProjectsSection from "./Components/Sections/ProjectsSection";
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false);
@@ -22,7 +23,8 @@ export default function Home() {
         <About />
       </div>
       <TitlesMarquee />
-      {/* <AnimationLab /> */}
+      <PhoneShowcase />
+      <ProjectsSection />
     </>
   );
 }

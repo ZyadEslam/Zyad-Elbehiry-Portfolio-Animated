@@ -11,7 +11,7 @@ type IntroProps = { onReveal?: () => void; onComplete?: () => void };
 
 const name = "Zyad Eslam Hamdy Abdelghaffar";
 
-const phrases = ["Frontend Developer", "Based in Egypt"];
+const phrases = ["Fullstack Developer", "Based in Egypt"];
 
 export default function Intro({ onComplete }: IntroProps) {
   const container = useRef<HTMLDivElement>(null);
@@ -28,6 +28,7 @@ export default function Intro({ onComplete }: IntroProps) {
       const splittedName = new SplitText(nameRef.current, {
         type: "words",
         autoSplit: true,
+        wordsClass:"name-word"
       });
 
       // Starting states
@@ -105,18 +106,18 @@ export default function Intro({ onComplete }: IntroProps) {
       {/* Top panel */}
       <div
         ref={topPanel}
-        className="absolute top-0 left-0 z-20 h-1/2 w-full bg-[#f8f8f8]"
+        className="absolute top-0 left-0 z-20 h-1/2 w-full bg-black"
       />
       {/* Bottom panel */}
       <div
         ref={bottomPanel}
-        className="absolute bottom-0 left-0 z-20 h-1/2 w-full bg-[#f8f8f8]"
+        className="absolute bottom-0 left-0 z-20 h-1/2 w-full bg-black"
       />
 
       {/* Thin center line */}
       <div
         ref={lineRef}
-        className="absolute top-1/2 left-1/2 z-30 h-px w-0 -translate-x-1/2 -translate-y-1/2 bg-[#222222]"
+        className="absolute top-1/2 left-1/2 z-30 h-px w-0 -translate-x-1/2 -translate-y-1/2 bg-white"
       />
 
       {/* Intro content */}
@@ -126,12 +127,12 @@ export default function Intro({ onComplete }: IntroProps) {
       >
         <span
           ref={eyebrowRef}
-          className="text-xs uppercase opacity-0 tracking-[0.3em] text-text-primary/60"
+          className="text-xs uppercase opacity-0 tracking-[0.3em] text-background/60"
         >
           Portfolio
         </span>
 
-        <div className="relative w-full h-12 md:h-16 overflow-hidden text-text-primary">
+        <div className="relative w-full h-12 md:h-16 overflow-hidden text-background">
           {phrases.map((phrase, i) => (
             <span
               key={phrase}
@@ -145,7 +146,7 @@ export default function Intro({ onComplete }: IntroProps) {
           ))}
 
           <p
-            className="absolute inset-0 flex invisible items-center justify-center text-2xl md:text-4xl font-light tracking-widest"
+            className="absolute inset-0 flex invisible items-center justify-center text-xl md:text-4xl font-light tracking-widest"
             ref={nameRef}
           >
             {name}

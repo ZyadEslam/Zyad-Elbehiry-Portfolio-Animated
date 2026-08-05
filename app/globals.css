@@ -25,6 +25,12 @@
   }
 }
 
+@layer {
+  .name-word {
+    @apply mx-1 ;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -45,8 +51,7 @@ body {
       rgba(104, 104, 104, 0.08) 1px,
       transparent 1px
     ),
-    linear-gradient(to right, rgba(104, 104, 104, 0.08) 1px, transparent 1px)
-    ;
+    linear-gradient(to right, rgba(104, 104, 104, 0.08) 1px, transparent 1px);
   background-size: 10px 10px;
 
   /* -webkit-mask-image: radial-gradient(
@@ -56,5 +61,6 @@ body {
   ); */
 }
 
-
-
+.phone-bg {
+  background: linear-gradient(145deg, #3d3d3d, #0a0a0a);
+}

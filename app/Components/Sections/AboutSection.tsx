@@ -29,13 +29,18 @@ const About = () => {
     () => {
       gsap
         .timeline({
-          scrollTrigger: { trigger: sectionRef.current, start: "top bottom" },
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end:"bottom bottom",
+            scrub: true,
+          },
           defaults: { ease: "power3.out" },
         })
-        .to(aboutWordRef.current, { opacity: 1, x: 0, duration: 1 })
+        .to(aboutWordRef.current, { opacity: 1, x: 100, duration: 1 })
         .to(paraRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
-        .to(keywordsRef.current, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
-        .to(roleRef.current, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3");
+        .to(keywordsRef.current, { opacity: 1, y: 0, duration: 0.3 }, "-=0.4")
+        .to(roleRef.current, { opacity: 1, y: 0, duration: 0.3 }, "-=0.3");
     },
     { scope: sectionRef }
   );

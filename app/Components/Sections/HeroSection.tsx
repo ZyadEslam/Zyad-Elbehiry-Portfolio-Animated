@@ -52,7 +52,7 @@ const Hero = () => {
 
       <div ref={imageRef} className="relative z-10 h-screen w-full ">
         <Image
-          src="/Protfolio-cartoone-Photoroom.png"
+          src="https://res.cloudinary.com/darxwbvff/image/upload/v1785930932/Protfolio-cartoone-Photoroom_ty3slg.png"
           alt="Portrait illustration"
           width={700}
           height={900}
