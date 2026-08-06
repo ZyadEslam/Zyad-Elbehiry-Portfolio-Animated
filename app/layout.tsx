@@ -5,6 +5,7 @@ import Nav from "./Components/Layout/Nav";
 import Footer from "./Components/Layout/Footer";
 import Spacer from "./Components/Sections/Spacer";
 import LenisProvider from "./Components/Layout/LenisProvider";
+import WhatsappFloat from "./Components/UI/WhatsappFloat";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -39,9 +40,10 @@ export default function RootLayout({
       lang="en"
       className={`${orbitron.variable} ${blackOps.variable} ${arefRuqaa.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full relative flex flex-col">
         <Nav />
         <LenisProvider>
+          <WhatsappFloat/>
           {children}
           <Spacer />
         </LenisProvider>

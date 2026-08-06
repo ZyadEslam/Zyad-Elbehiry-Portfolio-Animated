@@ -45,6 +45,9 @@ const Nav = () => {
         <span
           dir="rtl"
           className="font-aref-ruqaa text-sm uppercase tracking-widest"
+          onClick={() => {
+            scrollToSection(`#home`);
+          }}
         >
           زياد البحيري
         </span>
@@ -101,7 +104,10 @@ const Nav = () => {
         <nav className="gap-6 text-xs uppercase tracking-widest flex items-center ">
           <span
             dir="rtl"
-            className="font-aref-ruqaa text-sm uppercase tracking-widest"
+            className="font-aref-ruqaa text-sm uppercase tracking-widest cursor-pointer"
+            onClick={() => {
+              scrollToSection(`#home`);
+            }}
           >
             زياد البحيري
           </span>
@@ -111,7 +117,7 @@ const Nav = () => {
               onClick={() => {
                 scrollToSection(`#${link.toLowerCase()}`);
               }}
-              className="transition-opacity hover:opacity-60 text-[2.2vw] md:text-sm"
+              className="transition-opacity hover:opacity-60 text-[2.2vw] md:text-sm cursor-pointer"
             >
               {link}
             </p>
@@ -133,7 +139,7 @@ const Nav = () => {
                 scrollToSection(`#${link.toLowerCase()}`);
                 setMenuOpen(false);
               }}
-              className="transition-opacity hover:opacity-60"
+              className="transition-opacity hover:opacity-60 cursor-pointer"
             >
               {link}
             </p>

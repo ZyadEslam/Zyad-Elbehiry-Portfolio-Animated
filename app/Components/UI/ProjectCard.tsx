@@ -3,19 +3,22 @@ import Image from "next/image";
 
 export default function ProjectCard({
   project,
+  onOpen,
   onEnter,
   onLeave,
 }: {
   project: Project;
+  onOpen: (project: Project) => void;
   onEnter: () => void;
   onLeave: () => void;
 }) {
   return (
-    <a
-      href={project.href}
+    <button
+      type="button"
+      onClick={() => onOpen(project)}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
-      className="group block cursor-none"
+      className="group block w-full cursor-none text-left"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-neutral-200">
         <Image
@@ -33,6 +36,6 @@ export default function ProjectCard({
       <p className="mt-1 text-sm text-neutral-500">
         {project.category} - {project.year}
       </p>
-    </a>
+    </button>
   );
 }

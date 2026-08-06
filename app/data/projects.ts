@@ -4,7 +4,10 @@ export interface Project {
   category: string;
   year: string;
   image: string;
-  href: string;
+  description: string;
+  tags?: string[];
+  github?: string;
+  demo?: string;
 }
 
 //   "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png",
@@ -23,7 +26,9 @@ export const projects: Project[] = [
     year: "2025",
     image:
       "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png",
-    href: "#",
+    description: "lorem",
+    github: "#",
+    demo: "#",
   },
   {
     id: "02",
@@ -32,7 +37,9 @@ export const projects: Project[] = [
     year: "2024",
     image:
       "https://res.cloudinary.com/darxwbvff/image/upload/v1779096336/ChatGPT_Image_May_14_2026_05_01_24_PM_xbuc3h.png",
-    href: "#",
+    description: "lorem",
+    github: "#",
+    demo: "#",
   },
   {
     id: "03",
@@ -41,7 +48,9 @@ export const projects: Project[] = [
     year: "2024",
     image:
       "https://res.cloudinary.com/darxwbvff/image/upload/v1781615314/ChatGPT_Image_Jun_16_2026_04_04_56_PM_tvzaja.png",
-    href: "#",
+    description: "lorem",
+    github: "#",
+    demo: "#",
   },
   {
     id: "04",
@@ -50,6 +59,8 @@ export const projects: Project[] = [
     year: "2023",
     image:
       "https://res.cloudinary.com/darxwbvff/image/upload/v1779096306/ChatGPT_Image_May_16_2026_01_17_42_PM_ppgf8y.png",
-    href: "#",
+    description: "lorem",
+    github: "#",
+    demo: "#",
   },
 ];

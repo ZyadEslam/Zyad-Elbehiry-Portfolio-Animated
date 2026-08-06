@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import { projects, type Project } from "../../data/projects";
+import { projects, type Project } from "@/app/data/projects";
 import ProjectCard from "../UI/ProjectCard";
+import ProjectModal from "../UI/ProjectModal";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -19,6 +19,7 @@ export default function ProjectsSection() {
   const followerRef = useRef<HTMLDivElement>(null);
 
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Title morph: "Projects" -> "Designs" as the section is scrolled into
   // view, and back to "Projects" when scrolling back up above it.
@@ -72,7 +73,7 @@ export default function ProjectsSection() {
 
   return (
     <section
-    id="projects"
+      id="projects"
       ref={sectionRef}
       className="relative bg-[#F7F6F2] px-6 py-24 md:px-12 md:py-32"
     >
@@ -85,11 +86,12 @@ export default function ProjectsSection() {
       </h2>
 
       {/* Project grid: 1 column on small screens, 2 columns from lg up */}
-      <div className="grid grid-cols-1 gap-x-6 gap-y-16 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-24">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-24">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
             project={project}
+            onOpen={setSelectedProject}
             onEnter={() => setActiveId(project.id)}
             onLeave={() => setActiveId(null)}
           />
@@ -106,7 +108,11 @@ export default function ProjectsSection() {
           View
         </span>
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }
-

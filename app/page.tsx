@@ -1,21 +1,22 @@
 "use client";
 import { useEffect, useState } from "react";
 import Hero from "./Components/Sections/HeroSection";
-import Intro from "./Components/Sections/Intro";
+// import Intro from "./Components/Sections/Intro";
 import About from "./Components/Sections/AboutSection";
 import TitlesMarquee from "./Components/Sections/TitlesMarquee";
 import PhoneShowcase from "./Components/Sections/PhoneShowcase";
 import ProjectsSection from "./Components/Sections/ProjectsSection";
+import ServicesSection from "./Components/Sections/ServicesSection";
 
 export default function Home() {
-  const [introDone, setIntroDone] = useState(false);
+  // const [introDone, setIntroDone] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = introDone ? "" : "hidden";
-  }, [introDone]);
+  // useEffect(() => {
+  //   document.body.style.overflow = introDone ? "" : "hidden";
+  // }, [introDone]);
   return (
     <>
-      {!introDone && <Intro onComplete={() => setIntroDone(true)} />}
+      {/* {!introDone && <Intro onComplete={() => setIntroDone(true)} />} */}
       <div className="relative">
         <div className="sticky top-0 -z-10 h-screen overflow-hidden">
           <Hero />
@@ -25,6 +26,7 @@ export default function Home() {
       <TitlesMarquee />
       <PhoneShowcase />
       <ProjectsSection />
+      <ServicesSection/>
     </>
   );
 }

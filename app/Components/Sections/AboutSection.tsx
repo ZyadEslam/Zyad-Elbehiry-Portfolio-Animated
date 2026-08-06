@@ -37,17 +37,19 @@ const About = () => {
           },
           defaults: { ease: "power3.out" },
         })
-        .to(aboutWordRef.current, { opacity: 1, x: 0, duration: 1 })
-        .to(paraRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
-        .to(keywordsRef.current, { opacity: 1, y: 0, duration: 0.3 }, "-=0.4")
-        .to(roleRef.current, { opacity: 1, y: 0, duration: 0.3 }, "-=0.3");
+        .to(aboutWordRef.current, { opacity: 1, x: 0, duration: 1.2 })
+        .to(paraRef.current, { opacity: 1, y: 0, duration: 1 }, ">")
+        .to(keywordsRef.current, { opacity: 1, y: 0, duration: 0.5 }, ">")
+        .to(roleRef.current, { opacity: 1, y: 0, duration: 0.5 }, ">");
+
+      ScrollTrigger.refresh();
     },
     { scope: sectionRef }
   );
 
   return (
     <section
-    id="about"
+      id="about"
       ref={sectionRef}
       className="relative z-10 min-h-screen rounded-t-[2.5rem] bg-black px-6 py-24 text-white  md:rounded-t-[4rem] md:px-16 md:py-32"
     >

@@ -20,8 +20,8 @@
   :root {
     /* --background: #0a0a0a; */
     --background: #f8f8f8;
-    --foreground: #ededed;
     --text-primary: #222222;
+    --foreground: #ededed;
   }
 }
 
