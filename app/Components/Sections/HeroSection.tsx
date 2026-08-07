@@ -35,14 +35,14 @@ const Hero = () => {
 
   return (
     <section
-    id="hero"
+      id="hero"
       ref={container}
       className="relative flex h-screen w-full items-center justify-center overflow-hidden hero-grid"
     >
       {/* Section A — image + huge marquee behind it, only thing visible on load */}
       <div
         ref={marqueeTrackRef}
-        className="absolute top-1/2 left-0 hidden z-0 md:flex w-max -translate-y-1/2 items-center gap-16 whitespace-nowrap font-black-ops text-[20vw] md:text-[14vw] leading-none tracking-tight text-[#222222] "
+        className="absolute top-1/2 left-0 z-0 flex w-max -translate-y-1/2 items-center gap-16 whitespace-nowrap font-black-ops text-[35vw] md:text-[14vw] leading-none tracking-tight text-[#222222] "
       >
         {[...marqueeItems, ...marqueeItems].map((item, i) => (
           <span key={i} className="flex items-center gap-16">

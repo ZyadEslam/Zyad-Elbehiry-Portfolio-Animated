@@ -7,6 +7,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { projects, type Project } from "@/app/data/projects";
 import ProjectCard from "../UI/ProjectCard";
 import ProjectModal from "../UI/ProjectModal";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -23,14 +24,14 @@ export default function ProjectsSection() {
 
   // Title morph: "Projects" -> "Designs" as the section is scrolled into
   // view, and back to "Projects" when scrolling back up above it.
-  useEffect(() => {
+  useGSAP(() => {
     const el = titleRef.current;
     if (!el) return;
 
     const morph = (word: string) =>
       gsap.to(el, {
         duration: 0.9,
-        text: { value: word },
+        text: { value: word, type:"" },
         ease: "none",
       });
 
@@ -41,12 +42,8 @@ export default function ProjectsSection() {
       onLeaveBack: () => morph(WORD_A),
     });
 
-    return () => trigger.kill();
-  }, []);
-
-  // Mouse follower: a quickTo tween gives a smooth, lagging follow instead
-  // of snapping the circle straight to the cursor on every frame.
-  useEffect(() => {
+    // Mouse follower: a quickTo tween gives a smooth, lagging follow instead
+    // of snapping the circle straight to the cursor on every frame.
     const follower = followerRef.current;
     if (!follower) return;
 
@@ -59,7 +56,10 @@ export default function ProjectsSection() {
     };
 
     window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      trigger.kill();
+    };
   }, []);
 
   useEffect(() => {

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Services from "../UI/Services";
 
 gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
@@ -42,22 +43,23 @@ export default function ServicesSection() {
   );
 
   return (
-    <section
-      id="services"
-      ref={container}
-      className="bg-black px-[5%] text-[#f8f8f8]"
-    >
-      <div className="flex flex-col h-screen justify-center">
-        <div className="flex justify-between text-zinc-500 mb-2">
-          <span>04</span>
-          <span>(Services)</span>
-          <span>2026</span>
-        </div>
-        <div className="w-full border-y-2 border-zinc-700 py-16">
-          <div className="mx-auto max-w-[1600px] ">
-            <p
-              ref={textRef}
-              className="
+    <>
+      <section
+        id="services"
+        ref={container}
+        className="bg-black px-[5%] text-[#f8f8f8]"
+      >
+        <div className="flex flex-col h-screen justify-center">
+          <div className="flex justify-between text-zinc-500 mb-2">
+            <span>04</span>
+            <span>(Services)</span>
+            <span>2026</span>
+          </div>
+          <div className="w-full border-y-2 border-zinc-700 py-16">
+            <div className="mx-auto max-w-[1600px] ">
+              <p
+                ref={textRef}
+                className="
                 max-w-6xl
                 text-left
                 font-light
@@ -65,13 +67,15 @@ export default function ServicesSection() {
                 tracking-tighter
                 text-[clamp(2rem,6vw,6.5rem)]
               "
-            >
-              Thoughtful design and solid engineering — interfaces, systems, and
-              motion, built end to end and shipped with craft.
-            </p>
+              >
+                Thoughtful design and solid engineering — interfaces, systems,
+                and motion, built end to end and shipped with craft.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Services />
+    </>
   );
 }

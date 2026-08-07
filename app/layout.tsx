@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Black_Ops_One, Orbitron, Aref_Ruqaa } from "next/font/google";
+import { Black_Ops_One, Orbitron, Aref_Ruqaa, Sekuya } from "next/font/google";
 import "./globals.css";
 import Nav from "./Components/Layout/Nav";
 import Footer from "./Components/Layout/Footer";
 import Spacer from "./Components/Sections/Spacer";
 import LenisProvider from "./Components/Layout/LenisProvider";
-import WhatsappFloat from "./Components/UI/WhatsappFloat";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -43,7 +42,6 @@ export default function RootLayout({
       <body className="min-h-full relative flex flex-col">
         <Nav />
         <LenisProvider>
-          <WhatsappFloat/>
           {children}
           <Spacer />
         </LenisProvider>

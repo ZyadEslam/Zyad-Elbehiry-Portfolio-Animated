@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/src/ScrollToPlugin";
+import WhatsappFloat from "../UI/WhatsappFloat";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -97,10 +98,11 @@ const Nav = () => {
 
       {/* Bottom dock — compact nav that cross-fades in once scrolled past the hero */}
       <div
-        className={`fixed inset-x-0 bottom-8 text-text-primary z-50 mx-auto flex w-fit items-center gap-6 rounded-full bg-white px-3 md:px-5 py-2 font-orbitron shadow-lg transition-opacity duration-500 ${
+        className={`fixed inset-x-0 bottom-8 text-text-primary z-50 mx-auto flex flex-col w-fit items-center gap-6 rounded-full bg-white px-3 md:px-5 py-2 font-orbitron shadow-lg transition-opacity duration-500 ${
           scrolled ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
+        <WhatsappFloat />
         <nav className="gap-4 md:gap-6 text-xs uppercase tracking-widest flex items-center ">
           <span
             dir="rtl"

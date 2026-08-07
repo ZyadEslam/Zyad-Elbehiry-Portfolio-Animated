@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const WhatsappFloat = () => {
   return (
-    <Link href={"https://wa.me/01144094269"} target="_blank" className="fixed bottom-22 md:bottom-8 right-8 z-49 cursor-pointer">
+    <Link href={"https://wa.me/+0201144094269"} target="_blank" className="fixed bottom-22 md:bottom-8 right-8 z-49 cursor-pointer">
       <Image
         src={"/whatsapp-icon-logo.svg"}
         alt="whatsapp logo"
