@@ -31,16 +31,16 @@ const About = () => {
         .timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top bottom",
+            start: "top 75%",
             end: "bottom bottom",
             scrub: true,
           },
-          defaults: { ease: "power3.out" },
+          defaults: { ease: "power3.in" },
         })
-        .to(aboutWordRef.current, { opacity: 1, x: 0, duration: 1.2 })
-        .to(paraRef.current, { opacity: 1, y: 0, duration: 1 }, ">")
-        .to(keywordsRef.current, { opacity: 1, y: 0, duration: 0.5 }, ">")
-        .to(roleRef.current, { opacity: 1, y: 0, duration: 0.5 }, ">");
+        .to(paraRef.current, { opacity: 1, y: 0, duration: 1.5 })
+        .to(aboutWordRef.current, { opacity: 1, x: 0, duration: 1.2 },"+=2")
+        .to(keywordsRef.current, { opacity: 1, y: 0, duration: 0.5 }, "+=1")
+        .to(roleRef.current, { opacity: 1, y: 0, duration: 0.5 }, "+=.5");
 
       ScrollTrigger.refresh();
     },
@@ -58,7 +58,7 @@ const About = () => {
         <div className="flex md:w-1/4">
           <span
             ref={aboutWordRef}
-            className="-translate-x-8 p-0 md:p-4 font-serif text-7xl leading-none tracking-tight opacity-0  md:-rotate-90 md:text-8xl md:whitespace-nowrap"
+            className="-translate-x-8 p-0 md:p-4 font-serif text-7xl leading-none tracking-tight opacity-0  rotate-0 md:-rotate-90 md:text-8xl md:whitespace-nowrap"
           >
             About
           </span>

@@ -101,7 +101,7 @@ const Nav = () => {
           scrolled ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <nav className="gap-6 text-xs uppercase tracking-widest flex items-center ">
+        <nav className="gap-4 md:gap-6 text-xs uppercase tracking-widest flex items-center ">
           <span
             dir="rtl"
             className="font-aref-ruqaa text-sm uppercase tracking-widest cursor-pointer"
@@ -117,7 +117,7 @@ const Nav = () => {
               onClick={() => {
                 scrollToSection(`#${link.toLowerCase()}`);
               }}
-              className="transition-opacity hover:opacity-60 text-[2.2vw] md:text-sm cursor-pointer"
+              className="transition-opacity hover:opacity-60 text-[2.1vw] font-bold md:font-normal md:text-sm cursor-pointer"
             >
               {link}
             </p>
