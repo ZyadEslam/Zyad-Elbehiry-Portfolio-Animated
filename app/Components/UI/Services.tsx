@@ -78,9 +78,10 @@ export default function Services() {
       });
     });
 
-    gsap.fromTo(
+    // gsap.fromTo(
+    gsap.to(
       split.lines,
-      { yPercent: 110 },
+      // { yPercent: 110 },
       {
         yPercent: 0,
         stagger: 0.08,
@@ -309,7 +310,7 @@ export default function Services() {
   return (
     <section
       ref={container}
-      className="relative overflow-hidden bg-black text-[#f8f8f8]"
+      className="relative overflow-hidden bg-dark-bg text-[#f8f8f8]"
     >
       <div className="services-wrapper relative">
         <div className="mx-auto max-w-[1700px] px-6 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">

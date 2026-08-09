@@ -14,14 +14,14 @@ export const showcaseSlides: ShowcaseSlide[] = [
     title: "Kinetic Type",
     subtitle: "Motion Design — Reel 01",
     image:
-      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=2000&auto=format&fit=crop",
+      "/skillsBg.png",
     direction: "left",
   },
   {
     title: "Structural Light",
     subtitle: "Architecture — Reel 02",
     image:
-      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2000&auto=format&fit=crop",
+      "https://res.cloudinary.com/darxwbvff/image/upload/v1786273205/ChatGPT_Image_Aug_9_2026_01_57_52_PM_cdukie.png",
     direction: "top",
   },
   {

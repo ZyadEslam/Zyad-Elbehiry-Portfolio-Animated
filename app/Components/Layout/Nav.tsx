@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import gsap from "gsap";
-import ScrollToPlugin from "gsap/src/ScrollToPlugin";
 import WhatsappFloat from "../UI/WhatsappFloat";
-
-gsap.registerPlugin(ScrollToPlugin);
+import { scrollToSection } from "../Animations/sharedAnimation";
 
 const navLinks = ["About", "Projects", "Services", "Contact"];
 
@@ -13,15 +10,6 @@ const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isMenuVisible = menuOpen && !scrolled;
-
-  const scrollToSection = (id: string) => {
-    gsap.to(window, {
-      duration: 1.2,
-      scrollTo: `${id}`,
-      ease: "power2.inOut",
-      offsetY: -80,
-    });
-  };
 
   useEffect(() => {
     const onScroll = () => {

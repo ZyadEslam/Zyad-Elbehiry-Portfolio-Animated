@@ -37,8 +37,8 @@ const About = () => {
           },
           defaults: { ease: "power3.in" },
         })
-        .to(paraRef.current, { opacity: 1, y: 0, duration: 1.5 })
-        .to(aboutWordRef.current, { opacity: 1, x: 0, duration: 1.2 },"+=2")
+        .to(aboutWordRef.current, { opacity: 1, x: 0, duration: 1.2 })
+        .to(paraRef.current, { opacity: 1, y: 0, duration: 1.5 }, "+=2")
         .to(keywordsRef.current, { opacity: 1, y: 0, duration: 0.5 }, "+=1")
         .to(roleRef.current, { opacity: 1, y: 0, duration: 0.5 }, "+=.5");
 
@@ -51,7 +51,7 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative z-10 min-h-screen rounded-t-[2.5rem] bg-black px-6 py-24 text-white  md:rounded-t-[4rem] md:px-16 md:py-32"
+      className="relative z-10 min-h-screen rounded-t-[2.5rem] bg-dark-bg px-6 py-24 text-white  md:rounded-t-[4rem] md:px-16 md:py-32"
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:gap-20">
         {/* Big ABOUT label */}

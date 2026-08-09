@@ -43,7 +43,6 @@ export default function RootLayout({
         <Nav />
         <LenisProvider>
           {children}
-          <Spacer />
         </LenisProvider>
         <Footer />
       </body>

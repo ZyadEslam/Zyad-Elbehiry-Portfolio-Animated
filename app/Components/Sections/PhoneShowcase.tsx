@@ -40,7 +40,7 @@ export default function GsapShowcase() {
         gsap.set(imgRefs.current[i], {
           clipPath:
             i === 0 ? CLIP[slide.direction].to : CLIP[slide.direction].from,
-          scale: 1.18,
+          // scale: 1.18,
         });
         gsap.set(slideRefs.current[i], { autoAlpha: 1 });
         gsap.set(charRefs.current[i], {
@@ -90,7 +90,7 @@ export default function GsapShowcase() {
             imgRefs.current[i],
             {
               clipPath: CLIP[slide.direction].to,
-              duration: 0.42,
+              duration: 0.2,
               ease: "power3.inOut",
             },
             t
@@ -111,7 +111,7 @@ export default function GsapShowcase() {
             subtitleRefs.current[i - 1],
             { autoAlpha: 0, y: -14, duration: 0.25 },
             t
-          );
+          );0
         }
 
         // Slow continuous Ken Burns push-in on every image.
