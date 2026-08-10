@@ -9,6 +9,8 @@ import ProjectsSection from "./Components/Sections/ProjectsSection";
 import ServicesSection from "./Components/Sections/ServicesSection";
 import DeveloperCity from "./Components/Sections/DeveloperCity";
 import ContactSection from "./Components/Sections/ContactSection";
+import ProcessSection from "./Components/Sections/ProcessSection";
+import VelocityMarquee from "./Components/Sections/VelocityMarqueeSection";
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false);
@@ -26,10 +28,12 @@ export default function Home() {
         <About />
       </div>
       <TitlesMarquee />
+      <ProcessSection/>
       {/* <PhoneShowcase /> */}
-      <DeveloperCity/>
+      {/* <DeveloperCity/> */}
       <ProjectsSection />
       <ServicesSection/>
+      <VelocityMarquee/>
       <ContactSection/>
     </>
   );
