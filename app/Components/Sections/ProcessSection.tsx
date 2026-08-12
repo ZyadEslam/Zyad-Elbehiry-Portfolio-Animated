@@ -98,7 +98,7 @@ export default function ProcessSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-black px-6 py-28 text-white md:px-12 lg:px-20 lg:py-36"
+      className="relative w-full bg-dark-bg px-6 py-28 text-white md:px-12 lg:px-20 lg:py-36"
     >
       <div className="mx-auto max-w-5xl">
         <p className="mb-4 font-mono text-xs uppercase tracking-[0.3em] text-white/40">

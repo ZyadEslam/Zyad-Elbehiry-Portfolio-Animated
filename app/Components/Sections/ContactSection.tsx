@@ -8,8 +8,8 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 // Swap these for the real details.
-const CONTACT_EMAIL = "hello@marwanahmed.dev";
-const CONTACT_PHONE = "+20 100 123 4567";
+const CONTACT_EMAIL = "zyadelbehiry@gmail.com";
+const CONTACT_PHONE = "+20 114 409 4269";
 
 const BUDGET_OPTIONS = [
   "Under $1,000",
@@ -114,7 +114,7 @@ export default function ContactSection() {
             </span>
             <p>
               <span className="block">Zyad Elbehiry</span>
-              <span className="text-gray-400 block">Full-Stack Developer</span>
+              <span className="text-gray-400 block">Frontend Developer</span>
             </p>
           </div>
 

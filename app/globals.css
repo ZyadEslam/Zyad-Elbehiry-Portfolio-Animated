@@ -8,6 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-dark-bg: var(--dark-bg);
+  --color-test-bg: var(--test-bg);
   --color-text-primary: var(--text-primary);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -21,7 +22,8 @@
   :root {
     /* --background: #0a0a0a; */
     --background: #f3f3f3;
-    --dark-bg : #080808;
+    --dark-bg: #080808;
+    --test-bg: #C2C4C3;
     --text-primary: #222222;
     --foreground: #ededed;
   }
@@ -29,7 +31,7 @@
 
 @layer {
   .name-word {
-    @apply mx-1 ;
+    @apply mx-1;
   }
 }
 

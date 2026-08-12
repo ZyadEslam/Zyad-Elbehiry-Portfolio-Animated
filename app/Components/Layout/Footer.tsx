@@ -1,26 +1,26 @@
-"use client"
+"use client";
 import type { ReactNode } from "react";
 import { Aref_Ruqaa } from "next/font/google";
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/src/ScrollToPlugin";
 import { scrollToSection } from "../Animations/sharedAnimation";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollToPlugin);
 
-// A calligraphic Arabic display face for the "مروان" wordmark. Swap for a
-// custom logo/SVG if you have exact brand type — this is the closest
-// stock Google Font to a flowing signature-style mark.
 const logoFont = Aref_Ruqaa({ subsets: ["arabic"], weight: "700" });
 
 const NAV_LINKS = [
   { label: "Home", link: "home" },
   { label: "About", link: "about" },
+  { label: "Projects", link: "projects" },
   { label: "Services", link: "services" },
   { label: "Contact", link: "contact" },
 ];
 const SOCIAL_LINKS = [
-  { label: "LinkedIn", link: "#" },
-  { label: "Instagram", link: "#" },
+  { label: "LinkedIn", link: "https://linkedin.com/in/zyad-elbehiry" },
+  { label: "Github", link: "https://github.com/ZyadEslam" },
+  { label: "Email", link: "mailto:zyadelbehiry@gmail.com" },
 ];
 
 export default function Footer() {
@@ -57,14 +57,14 @@ export default function Footer() {
             <ul className="divide-y divide-white/[0.08]">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  <FooterLink href={link.link}>{link.label}</FooterLink>
+                  <FooterLink scrollTo={link.link}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
           </FooterColumn>
 
           {/* Column 3 — social */}
-          <FooterColumn heading="Follow on">
+          <FooterColumn heading="Contact me on">
             <ul className="divide-y divide-white/[0.08]">
               {SOCIAL_LINKS.map((social) => (
                 <li key={social.label}>
@@ -134,12 +134,25 @@ function FooterColumn({
   );
 }
 
-function FooterLink({ href, children }: { href: string; children: ReactNode }) {
+function FooterLink({
+  href,
+  scrollTo,
+  children,
+}: {
+  href?: string;
+  scrollTo?: string;
+  children: ReactNode;
+}) {
   return (
-    <p
+    <Link
       onClick={() => {
-        scrollToSection(`#${href.toLowerCase()}`);
+        if (scrollTo) {
+          scrollToSection(`#${scrollTo.toLowerCase()}`);
+        } else {
+          return;
+        }
       }}
+      href={href ? href : "#"}
       className="group flex items-center justify-between cursor-pointer py-3 text-lg font-medium text-white/90 transition-colors duration-300 hover:text-white"
     >
       <span>{children}</span>
@@ -156,6 +169,6 @@ function FooterLink({ href, children }: { href: string; children: ReactNode }) {
         <path d="M7 17 17 7" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M7 7h10v10" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
-    </p>
+    </Link>
   );
 }

@@ -114,12 +114,12 @@ export default function Services() {
     });
 
     gsap.to(topBorderRefs.current[activeIndex], {
-      backgroundColor: "#f8f8f8",
+      backgroundColor: "#222222",
       duration: 0.4,
     });
 
     gsap.to(bottomBorderRefs.current[activeIndex], {
-      backgroundColor: "#f8f8f8",
+      backgroundColor: "#222222",
       duration: 0.4,
     });
 
@@ -310,11 +310,11 @@ export default function Services() {
   return (
     <section
       ref={container}
-      className="relative overflow-hidden bg-dark-bg text-[#f8f8f8]"
+      className="relative overflow-hidden bg-white text-text-primary"
     >
       <div className="services-wrapper relative">
         <div className="mx-auto max-w-[1700px] px-6 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">
-          <p className="mb-12 text-xs uppercase tracking-[0.45em] text-zinc-500 md:mb-20">
+          <p className="mb-12 text-xs uppercase tracking-[0.45em] text-zinc-800 md:mb-20">
             Ready for
           </p>
 
@@ -332,7 +332,7 @@ export default function Services() {
                   ref={(el) => {
                     if (el) topBorderRefs.current[index] = el;
                   }}
-                  className="h-full origin-left scale-x-0 bg-zinc-700"
+                  className="h-full origin-left scale-x-0 bg-zinc-800"
                 />
               </div>
 
@@ -356,7 +356,7 @@ export default function Services() {
                   }}
                   className="
                     text-sm
-                    text-zinc-600
+                    text-zinc-800
                     opacity-0
   
                     md:pt-3
@@ -393,7 +393,7 @@ export default function Services() {
                     max-w-md
                     text-sm
                     leading-7
-                    text-zinc-500
+                    text-zinc-700
                     opacity-0
   
                     md:col-start-2

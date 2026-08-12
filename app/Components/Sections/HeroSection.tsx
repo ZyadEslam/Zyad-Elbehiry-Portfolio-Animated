@@ -37,7 +37,7 @@ const Hero = () => {
     <section
       id="hero"
       ref={container}
-      className="relative flex h-screen w-full items-center justify-center overflow-hidden hero-grid"
+      className="relative flex h-screen w-full  items-center justify-center overflow-hidden hero-grid"
     >
       {/* Section A — image + huge marquee behind it, only thing visible on load */}
       <div

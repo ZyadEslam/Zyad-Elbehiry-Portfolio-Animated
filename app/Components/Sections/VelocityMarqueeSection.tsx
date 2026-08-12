@@ -19,15 +19,17 @@ export default function VelocityMarquee() {
     () => {
       const t1 = gsap.to(track1Ref.current, {
         xPercent: -50,
-        duration: 24,
+        duration: 20,
         ease: "none",
         repeat: -1,
+        yoyo: true,
       });
       const t2 = gsap.to(track2Ref.current, {
         xPercent: 50,
-        duration: 28,
+        duration: 20,
         ease: "none",
         repeat: -1,
+        yoyo: true,
       });
       tweensRef.current = [t1, t2];
 
@@ -56,7 +58,11 @@ export default function VelocityMarquee() {
 
         clearTimeout(settleTimeout);
         settleTimeout = setTimeout(() => {
-          gsap.to(tweensRef.current, { timeScale: 1, duration: 1.4, ease: "power2.out" });
+          gsap.to(tweensRef.current, {
+            timeScale: 1,
+            duration: 1.4,
+            ease: "power2.out",
+          });
         }, 140);
       };
 
@@ -73,12 +79,20 @@ export default function VelocityMarquee() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-black py-16 text-white md:py-24"
+      className="relative w-full overflow-hidden bg-dark-bg py-8 md:py-10"
     >
-      <div className="-rotate-2 border-y border-white/10">
-        <MarqueeRow innerRef={track1Ref as React.RefObject<HTMLDivElement>} items={ROW_ONE} variant="filled" />
+      <div className="-rotate-2 border-y flex flex-col gap-4 border-white/10">
+        <MarqueeRow
+          innerRef={track1Ref as React.RefObject<HTMLDivElement>}
+          items={ROW_ONE}
+          variant="filled"
+        />
         <div className="border-t border-white/10" />
-        <MarqueeRow innerRef={track2Ref as React.RefObject<HTMLDivElement>} items={ROW_TWO} variant="outline" />
+        <MarqueeRow
+          innerRef={track2Ref as React.RefObject<HTMLDivElement>}
+          items={ROW_TWO}
+          variant="outline"
+        />
       </div>
     </section>
   );
@@ -93,26 +107,34 @@ function MarqueeRow({
   items: string[];
   variant: "filled" | "outline";
 }) {
-  const doubled = [...items, ...items];
+  const doubled = [...items, ...items, ...items];
 
   return (
-    <div className="overflow-hidden py-4 md:py-6">
-      <div ref={innerRef} className="flex w-max shrink-0 items-center">
+    <div className="overflow-hidden bg-background py-4 md:py-6">
+      <div
+        ref={innerRef}
+        className={`flex w-max shrink-0 items-center ${
+          variant === "outline" && "-translate-x-[90%]"
+        }`}
+      >
         {doubled.map((word, i) => (
-          <span key={i} className="flex shrink-0 items-center">
+          <span key={i} className=" flex shrink-0 items-center">
             <span
               className={`px-6 text-[9vw] font-black uppercase leading-none tracking-tight md:text-[6vw] ${
-                variant === "filled" ? "text-white" : "text-transparent"
+                variant === "filled" ? "text-text-primary" : "text-transparent"
               }`}
               style={
                 variant === "outline"
-                  ? { WebkitTextStroke: "1.5px white" }
+                  ? { WebkitTextStroke: "1.5px var(--text-primary)" }
                   : undefined
               }
             >
               {word}
             </span>
-            <span aria-hidden="true" className="text-[4vw] text-white/20 md:text-[2vw]">
+            <span
+              aria-hidden="true"
+              className="text-[4vw] text-text-primary/80 md:text-[2vw]"
+            >
               ✦
             </span>
           </span>
