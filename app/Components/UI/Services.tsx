@@ -310,7 +310,7 @@ export default function Services() {
   return (
     <section
       ref={container}
-      className="relative overflow-hidden bg-white text-text-primary"
+      className="relative overflow-hidden bg-background text-text-primary"
     >
       <div className="services-wrapper relative">
         <div className="mx-auto max-w-[1700px] px-6 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">

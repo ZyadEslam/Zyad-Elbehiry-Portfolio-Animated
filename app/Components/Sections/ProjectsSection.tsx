@@ -31,7 +31,7 @@ export default function ProjectsSection() {
     const morph = (word: string) =>
       gsap.to(el, {
         duration: 0.9,
-        text: { value: word, type:"" },
+        text: { value: word, type: "" },
         ease: "none",
       });
 
@@ -75,7 +75,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative bg-[#F7F6F2] px-6 py-24 md:px-12 md:py-32"
+      className="relative bg-background px-6 py-24 md:px-12 md:py-32"
     >
       {/* Section title, morphs on scroll via GSAP TextPlugin */}
       <h2
@@ -101,10 +101,10 @@ export default function ProjectsSection() {
       {/* Mouse-follower: thick-bordered, transparent-centered circle with "View" */}
       <div
         ref={followerRef}
-        className="pointer-events-none fixed left-0 top-0 z-50 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 scale-0 items-center justify-center rounded-full border-[3px] border-neutral-900 opacity-0 mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-50 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 scale-0 items-center justify-center rounded-full border-[5px] border-white opacity-0 "
         aria-hidden="true"
       >
-        <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-white">
+        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white ">
           View
         </span>
       </div>

@@ -47,9 +47,10 @@ export default function ServicesSection() {
       <section
         id="services"
         ref={container}
-        className="bg-dark-bg px-[5%] text-[#f8f8f8]"
+        // className="bg-dark-bg px-[5%] text-[#f8f8f8]"
+        className=" px-[5%] text-text-primary "
       >
-        <div className="flex flex-col h-screen justify-center">
+        <div className="flex flex-col md:h-screen justify-center">
           <div className="flex justify-between text-zinc-500 mb-2">
             <span>04</span>
             <span>(Services)</span>
