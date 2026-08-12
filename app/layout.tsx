@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Black_Ops_One, Orbitron, Aref_Ruqaa, Sekuya } from "next/font/google";
+import { Black_Ops_One, Orbitron, Aref_Ruqaa } from "next/font/google";
 import "./globals.css";
 import Nav from "./Components/Layout/Nav";
 import Footer from "./Components/Layout/Footer";
-import Spacer from "./Components/Sections/Spacer";
+// import Spacer from "./Components/Sections/Spacer";
 import LenisProvider from "./Components/Layout/LenisProvider";
 
 const orbitron = Orbitron({
@@ -41,9 +41,7 @@ export default function RootLayout({
     >
       <body className="min-h-full relative flex flex-col">
         <Nav />
-        <LenisProvider>
-          {children}
-        </LenisProvider>
+        <LenisProvider>{children}</LenisProvider>
         <Footer />
       </body>
     </html>
