@@ -39,9 +39,11 @@ export default function RootLayout({
       lang="en"
       className={`${orbitron.variable} ${blackOps.variable} ${arefRuqaa.variable} h-full antialiased`}
     >
-      <body className="min-h-full relative flex flex-col">
+      <body className="min-h-full relative">
         <Nav />
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+        {children}
+        </LenisProvider>
         <Footer />
       </body>
     </html>

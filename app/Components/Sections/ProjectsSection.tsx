@@ -75,12 +75,12 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative bg-background px-6 py-24 md:px-12 md:py-32"
+      className="relative bg-dark-bg px-6 py-24 md:px-12 md:py-32"
     >
       {/* Section title, morphs on scroll via GSAP TextPlugin */}
       <h2
         ref={titleRef}
-        className="mb-16 select-none text-[16vw] font-black uppercase leading-[0.9] tracking-tight text-neutral-900 sm:text-[11vw] md:mb-24 lg:text-[7vw]"
+        className="mb-16 select-none text-[16vw] font-black uppercase leading-[0.9] tracking-tight text-white sm:text-[11vw] md:mb-24 lg:text-[7vw]"
       >
         {WORD_A}
       </h2>

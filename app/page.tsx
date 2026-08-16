@@ -11,6 +11,9 @@ import ServicesSection from "./Components/Sections/ServicesSection";
 import ContactSection from "./Components/Sections/ContactSection";
 import ProcessSection from "./Components/Sections/ProcessSection";
 import VelocityMarquee from "./Components/Sections/VelocityMarqueeSection";
+import SkillsPathSection from "./Components/Sections/Skills";
+import TitlesMarquee from "./Components/Sections/TitlesMarquee";
+import ServicesHorizontalSection from "./Components/Sections/ServicesHorizontal";
 
 export default function Home() {
   // const [introDone, setIntroDone] = useState(false);
@@ -27,11 +30,12 @@ export default function Home() {
         </div>
         <About />
       </div>
-      <VelocityMarquee />
-      {/* <TitlesMarquee /> */}
+      {/* <VelocityMarquee /> */}
+      <TitlesMarquee />
+      <ServicesHorizontalSection />
       <ProcessSection />
-      {/* <Heroo /> */}
-      {/* <DeveloperCity/> */}
+      {/* <SkillsPathSection/> */}
+
       <ProjectsSection />
       <ServicesSection />
       <ContactSection />

@@ -15,7 +15,6 @@ export default function ServicesSection() {
 
   useGSAP(
     () => {
-      if (!textRef.current) return;
 
       const split = SplitText.create(textRef.current, {
         type: "lines",
@@ -48,7 +47,7 @@ export default function ServicesSection() {
         id="services"
         ref={container}
         // className="bg-dark-bg px-[5%] text-[#f8f8f8]"
-        className=" px-[5%] text-text-primary "
+        className=" px-[5%] text-text-primary bg-dark-bg "
       >
         <div className="flex flex-col md:h-screen justify-center">
           <div className="flex justify-between text-zinc-500 mb-2">
@@ -67,6 +66,7 @@ export default function ServicesSection() {
                 leading-[0.95]
                 tracking-tighter
                 text-[clamp(2rem,6vw,6.5rem)]
+                text-white
               "
               >
                 Thoughtful design and solid engineering — interfaces, systems,

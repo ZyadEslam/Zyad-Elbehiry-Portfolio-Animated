@@ -310,11 +310,11 @@ export default function Services() {
   return (
     <section
       ref={container}
-      className="relative overflow-hidden bg-background text-text-primary"
+      className="relative overflow-hidden bg-dark-bg text-text-primary"
     >
       <div className="services-wrapper relative">
         <div className="mx-auto max-w-[1700px] px-6 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">
-          <p className="mb-12 text-xs uppercase tracking-[0.45em] text-zinc-800 md:mb-20">
+          <p className="mb-12 text-xs uppercase tracking-[0.45em] text-zinc-300 md:mb-20">
             Ready for
           </p>
 
@@ -356,7 +356,7 @@ export default function Services() {
                   }}
                   className="
                     text-sm
-                    text-zinc-800
+                    text-zinc-200
                     opacity-0
   
                     md:pt-3
@@ -377,7 +377,7 @@ export default function Services() {
                     tracking-[-0.05em]
   
                     text-[clamp(2.75rem,13vw,8rem)]
-  
+                  text-white
                     md:col-start-2
                   "
                 >
@@ -393,7 +393,7 @@ export default function Services() {
                     max-w-md
                     text-sm
                     leading-7
-                    text-zinc-700
+                    text-white
                     opacity-0
   
                     md:col-start-2

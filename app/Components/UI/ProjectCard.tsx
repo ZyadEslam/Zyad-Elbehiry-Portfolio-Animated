@@ -31,7 +31,7 @@ export default function ProjectCard({
       </div>
 
       <div className="mt-5 flex items-baseline justify-between">
-        <h3 className="text-xl font-semibold text-black">{project.title}</h3>
+        <h3 className="text-xl font-semibold text-white">{project.title}</h3>
       </div>
       <p className="mt-1 text-sm text-neutral-500">
         {project.category} - {project.year}

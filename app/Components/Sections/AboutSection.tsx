@@ -52,7 +52,7 @@ const About = () => {
       <section
         id="about"
         ref={sectionRef}
-        className="relative z-10 min-h-screen rounded-t-[2.5rem] bg-dark-bg px-6 py-24 text-white  md:rounded-t-[4rem] md:px-16 md:py-32"
+        className="relative z-10 min-h-screen bg-dark-bg px-6 py-24 text-white   md:px-16 md:py-32"
       >
         <div className="mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:gap-20">
           {/* Big ABOUT label */}
