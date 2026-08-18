@@ -75,18 +75,18 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative bg-dark-bg px-6 py-24 md:px-12 md:py-32"
+      className="relative px-6 py-24 md:px-12 md:py-32"
     >
       {/* Section title, morphs on scroll via GSAP TextPlugin */}
       <h2
         ref={titleRef}
-        className="mb-16 select-none text-[16vw] font-black uppercase leading-[0.9] tracking-tight text-white sm:text-[11vw] md:mb-24 lg:text-[7vw]"
+        className="mb-16 select-none text-[16vw] font-black uppercase leading-[0.9] tracking-tight text-text-primary sm:text-[11vw] md:mb-24 lg:text-[7vw]"
       >
         {WORD_A}
       </h2>
 
       {/* Project grid: 1 column on small screens, 2 columns from lg up */}
-      <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-24">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-[1fr_1fr] lg:gap-x-10 lg:gap-y-24">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
@@ -101,10 +101,10 @@ export default function ProjectsSection() {
       {/* Mouse-follower: thick-bordered, transparent-centered circle with "View" */}
       <div
         ref={followerRef}
-        className="pointer-events-none fixed left-0 top-0 z-50 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 scale-0 items-center justify-center rounded-full border-[5px] border-white opacity-0 "
+        className="pointer-events-none fixed left-0 top-0 z-50 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 scale-0 items-center justify-center rounded-full border-[5px] border-white opacity-0 mix-blend-difference"
         aria-hidden="true"
       >
-        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white ">
+        <span className="text-[11px] font-bold uppercase tracking-[0.2em] ">
           View
         </span>
       </div>

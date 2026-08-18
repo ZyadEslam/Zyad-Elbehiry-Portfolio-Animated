@@ -145,6 +145,12 @@ export default function ProjectModal({
   // the parent to clear its selection. contextSafe keeps this tween
   // registered with the same gsap context useGSAP is managing.
 
+
+// /////////////////////////////////////////////////////////////////////////
+  // Modal in small screens does not fit all the text
+// /////////////////////////////////////////////////////////////////////////
+
+
   return (
     <div
       ref={overlayRef}
@@ -163,7 +169,7 @@ export default function ProjectModal({
       {current && (
         <div
           ref={panelRef}
-          className="relative flex max-h-[88vh] w-full max-w-5xl flex-col overflow-y-auto bg-[#F7F6F2] shadow-2xl md:flex-row"
+          className="relative flex max-h-[88vh] gap-4 w-full md:max-w-[80%] flex-col overflow-y-auto bg-transparent md:flex-row"
         >
           <button
             ref={closeBtnRef}
@@ -177,18 +183,18 @@ export default function ProjectModal({
 
           <div
             ref={imgWrapRef}
-            className="relative aspect-video w-full shrink-0 overflow-hidden bg-neutral-200 md:aspect-auto md:w-1/2"
+            className="relative aspect-video w-full shrink-0 overflow-hidden bg-transparent md:aspect-auto md:w-1/2"
           >
             <Image
               src={current.image}
               alt={current.title}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
 
-          <div className="flex w-full flex-col justify-center px-6 py-10 md:w-1/2 md:px-12 md:py-14">
+          <div className="flex w-full flex-col justify-center bg-[#F7F6F2] px-6 py-10 md:w-1/2 md:px-12 md:py-14">
             <div
               ref={metaRef}
               className="mb-2 font-mono text-xs uppercase tracking-[0.25em] text-neutral-500"

@@ -32,8 +32,8 @@ export default function Home() {
       </div>
       {/* <VelocityMarquee /> */}
       <TitlesMarquee />
-      <ServicesHorizontalSection />
       <ProcessSection />
+      {/* <ServicesHorizontalSection /> */}
       {/* <SkillsPathSection/> */}
 
       <ProjectsSection />

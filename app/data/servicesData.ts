@@ -16,38 +16,38 @@ export const SERVICES: ServiceItem[] = [
     title: "Brand Strategy",
     description: "Positioning, voice, and a visual system that actually holds together under pressure.",
     image:
-      "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png"
-  },
-  {
+      "/t1.jpg"
+    },
+    {
     id: "design",
     index: "02",
     title: "Web Design",
     description: "Interfaces that look inevitable in hindsight — not just on-trend for a season.",
- image:
-      "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png"
+    image:
+    "/t2.jpg"
   },
   {
     id: "development",
     index: "03",
     title: "Development",
     description: "Fast, accessible builds engineered to survive real users, not just a demo.",
- image:
-      "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png"
+    image:
+    "/t3.jpg"
   },
   {
     id: "motion",
     index: "04",
     title: "Motion & Animation",
     description: "Micro-interactions and scroll storytelling with real narrative intent.",
- image:
-      "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png"
+    image:
+    "/t4.jpg"
   },
-  {
-    id: "growth",
-    index: "05",
-    title: "SEO & Growth",
-    description: "Technical foundations that make the rest of the work findable.",
- image:
-      "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png"
-  },
+//   {
+//     id: "growth",
+//     index: "05",
+//     title: "SEO & Growth",
+//     description: "Technical foundations that make the rest of the work findable.",
+//  image:
+//       "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png"
+//   },
 ];

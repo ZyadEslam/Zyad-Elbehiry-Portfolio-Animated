@@ -26,12 +26,14 @@ export default function ProjectCard({
           alt={project.title}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          className="object-contain transition-transform duration-700 ease-out group-hover:scale-110"
         />
       </div>
 
       <div className="mt-5 flex items-baseline justify-between">
-        <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+        <h3 className="text-xl font-semibold text-text-primary">
+          {project.title}
+        </h3>
       </div>
       <p className="mt-1 text-sm text-neutral-500">
         {project.category} - {project.year}

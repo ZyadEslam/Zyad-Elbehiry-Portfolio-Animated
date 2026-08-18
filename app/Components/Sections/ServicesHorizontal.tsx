@@ -9,277 +9,204 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function pad(n: number) {
-  return String(n).padStart(2, "0");
-}
+const MARQUEE_PX_PER_SECOND = 70;
 
-/**
- * ServicesHorizontalSection
- * -----------------------------------------------------------------------
- * "Fake" horizontal scroll: the section pins for the vertical scroll
- * distance needed to translate an oversized flex row (`trackRef`) all the
- * way to its end, so normal mouse-wheel / touch scroll reads as
- * horizontal motion. Each card is ~75% of the viewport wide, so the next
- * card always peeks in ~25% at the right edge.
- *
- * Per-card entrance (image rotating in from a steeper tilt to its resting
- * -30° / 30° alternation, title/description sliding up) is driven by
- * individual ScrollTriggers that use `containerAnimation: scrollTween` —
- * the documented GSAP pattern for scrubbing child animations against a
- * horizontally-scrolling parent instead of the page's vertical scroll.
- * -----------------------------------------------------------------------
- */
 export default function ServicesHorizontalSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const panelRefs = useRef<HTMLDivElement[]>([]);
-  const imageRefs = useRef<HTMLDivElement[]>([]);
-  const progressFillRef = useRef<HTMLDivElement>(null);
-  const counterRef = useRef<HTMLSpanElement>(null);
-  const hintRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       const track = trackRef.current;
-      if (!track) return;
+      const section = sectionRef.current;
 
-      const getScrollDistance = () => track.scrollWidth - window.innerWidth;
+      if (!track || !section) return;
 
       ScrollTrigger.normalizeScroll(true);
 
-      const scrollTween = gsap.to(track, {
-        x: () => -getScrollDistance(),
+      let marqueeTween: gsap.core.Tween | null = null;
+
+      // -------------------------------------------------------
+      // PANEL ANIMATION
+      // -------------------------------------------------------
+
+      const updatePanels = () => {
+        const viewportCenter = window.innerWidth / 2;
+
+        panelRefs.current.forEach((panel) => {
+          if (!panel) return;
+
+          const rect = panel.getBoundingClientRect();
+
+          const panelCenter = rect.left + rect.width / 2;
+
+          // Distance from the center of the viewport.
+          const distance = Math.abs(panelCenter - viewportCenter);
+
+          // Normalize distance.
+          // 0 = exactly in the center
+          // 1 = completely away from center
+          const maxDistance = window.innerWidth * 0.65;
+
+          const progress = gsap.utils.clamp(0, 1, distance / maxDistance);
+
+          // Center panel:
+          // scale = 1
+          // rotation = 0
+          //
+          // Panels further away:
+          // scale = 0.75
+          // rotation = +/- 2
+          const scale = gsap.utils.interpolate(1, 0.75, progress);
+
+          const direction = panelCenter < viewportCenter ? -1 : 1;
+
+          const rotation = gsap.utils.interpolate(0, 2, progress) * direction;
+
+          gsap.set(panel, {
+            scale,
+            rotate: rotation,
+            transformOrigin: "50% 50%",
+          });
+        });
+      };
+
+      // -------------------------------------------------------
+      // MARQUEE
+      // -------------------------------------------------------
+
+      // function startMarquee() {
+      // if (marqueeTween || !track) return;
+
+      const oneSetWidth = track.scrollWidth / 2;
+
+      marqueeTween = gsap.to(track, {
+        x: -oneSetWidth,
+        duration: 10,
         ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          // markers: true,
-          end: () => `+=${getScrollDistance()}`,
-          // end: () => `+=3000`,
-          // Works around ancestors with overflow-hidden/transform/filter
-          // breaking the default position:fixed pin (see note in README).
-          pinType: "transform",
-          pin: sectionRef.current,
-          scrub: 1,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
+        repeat: -1,
 
-          // onUpdate: (self) => {
-          //   if (progressFillRef.current) {
-          //     gsap.set(progressFillRef.current, { scaleX: self.progress });
-          //   }
-          //   const idx = Math.min(
-          //     SERVICES.length - 1,
-          //     Math.floor(self.progress * SERVICES.length)
-          //   );
-          //   if (counterRef.current) {
-          //     counterRef.current.textContent = `${pad(idx + 1)} / ${pad(
-          //       SERVICES.length
-          //     )}`;
-          //   }
-          //   if (hintRef.current) {
-          //     gsap.to(hintRef.current, {
-          //       opacity: self.progress > 0.03 ? 0 : 1,
-          //       duration: 0.3,
-          //       overwrite: "auto",
-          //     });
-          //   }
-          // },
-        },
+        onUpdate: updatePanels,
       });
 
-      // Per-card reveal, scrubbed against horizontal position rather than
-      // vertical page scroll (containerAnimation is the key bit here).
-      panelRefs.current.forEach((panel, i) => {
-        const restRotation = i % 2 === 0 ? 5 : -5;
-        const startRotation = i % 2 === 0 ? -38 : 38;
-        const image = imageRefs.current[i];
-        const title = panel.querySelector<HTMLElement>("[data-title]");
-        const desc = panel.querySelector<HTMLElement>("[data-desc]");
+      // Initial panel state.
+      updatePanels();
+      // }
 
-        if (image) {
-          gsap.fromTo(
-            image,
-            { rotate: startRotation, scale: 0.82, opacity: 0.35 },
-            {
-              rotate: restRotation,
-              scale: 1,
-              opacity: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: panel,
-                containerAnimation: scrollTween,
-                start: "left 88%",
-                end: "left 35%",
-                scrub: true,
-              },
-            }
-          );
+      // -------------------------------------------------------
+      // SECTION ENTRANCE
+      // -------------------------------------------------------
 
-          //       // Hover flourish: straighten + lift while the pointer is over it.
-          // image.addEventListener("mouseenter", () => {
-          //   gsap.to(image, {
-          //     rotate: 0,
-          //     scale: 1.05,
-          //     duration: 0.5,
-          //     ease: "power3.out",
-          //   });
-          // });
-          // image.addEventListener("mouseleave", () => {
-          //   gsap.to(image, {
-          //     rotate: restRotation,
-          //     scale: 1,
-          //     duration: 0.5,
-          //     ease: "power3.out",
-          //   });
-          // });
-        }
-
-        // if (title) {
-        //   gsap.fromTo(
-        //     title,
-        //     { y: 40, opacity: 0 },
-        //     {
-        //       y: 0,
-        //       opacity: 1,
-        //       ease: "none",
-        //       scrollTrigger: {
-        //         trigger: panel,
-        //         containerAnimation: scrollTween,
-        //         start: "left 82%",
-        //         end: "left 48%",
-        //         scrub: true,
-        //       },
-        //     }
-        //   );
-        // }
-
-        // if (desc) {
-        //   gsap.fromTo(
-        //     desc,
-        //     { y: 24, opacity: 0 },
-        //     {
-        //       y: 0,
-        //       opacity: 1,
-        //       ease: "none",
-        //       scrollTrigger: {
-        //         trigger: panel,
-        //         containerAnimation: scrollTween,
-        //         start: "left 78%",
-        //         end: "left 42%",
-        //         scrub: true,
-        //       },
-        //     }
-        //   );
-        // }
-      });
-
-      //   // Remote images can shift layout slightly once they load — refresh
-      //   // ScrollTrigger's cached measurements once they're all in.
-      // const imgs = track.querySelectorAll("img");
-      // let pending = imgs.length;
-      // const onOneLoaded = () => {
-      //   pending -= 1;
-      //   if (pending <= 0) ScrollTrigger.refresh();
-      // };
-      // imgs.forEach((img) => {
-      //   if (img.complete) onOneLoaded();
-      //   else img.addEventListener("load", onOneLoaded, { once: true });
+      // gsap.set(section, {
+      //   scale: 0.5,
+      //   rotate: 0,
       // });
 
+      // const trackAnimation = gsap.to(section, {
+      //   scale: 1,
+      //   rotate: 0,
+      //   duration: 1.1,
+      //   ease: "power3.out",
+
+      //   scrollTrigger: {
+      //     trigger: section,
+      //     start: "top bottom",
+      //     toggleActions: "play none none reverse",
+      //   },
+
+      //   onComplete: startMarquee,
+      // });
+
+      // -------------------------------------------------------
+      // IMAGE LOADING
+      // -------------------------------------------------------
+
+      const imgs = track.querySelectorAll("img");
+
+      let pending = imgs.length;
+
+      const onOneLoaded = () => {
+        pending -= 1;
+
+        if (pending <= 0) {
+          ScrollTrigger.refresh();
+          updatePanels();
+        }
+      };
+
+      imgs.forEach((img) => {
+        if (img.complete) {
+          onOneLoaded();
+        } else {
+          img.addEventListener("load", onOneLoaded, {
+            once: true,
+          });
+        }
+      });
+
+      // -------------------------------------------------------
+      // RESIZE
+      // -------------------------------------------------------
+
+      const handleResize = () => {
+        updatePanels();
+        ScrollTrigger.refresh();
+      };
+
+      window.addEventListener("resize", handleResize);
+
       ScrollTrigger.refresh();
+
       return () => {
-        scrollTween.scrollTrigger?.kill();
-        scrollTween.kill();
+        marqueeTween?.kill();
+        // trackAnimation.kill();
+
+        window.removeEventListener("resize", handleResize);
       };
     },
     { scope: sectionRef }
   );
 
+  // Two copies back-to-back so the marquee wrap is seamless.
+  const loopedServices = [...SERVICES, ...SERVICES];
+
   return (
-    <section className="bg-dark-bg py-8">
+    <section className="bg-dark-bg relative">
+      {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-8 bg-linear-to-b from-transparent to-dark-bg" /> */}
       <div
         ref={sectionRef}
-        className="h-screen w-full overflow-hidden text-white"
+        className="relative py-8 lg:h-screen w-full bg-background overflow-hidden text-white"
       >
-        {/* header */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-baseline justify-between px-6 pt-10 md:px-12 md:pt-14 lg:px-20">
-          {/* <div>
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-white/40">What I do</p>
-          <h2 className="text-3xl font-black uppercase leading-[1.05] tracking-tight md:text-5xl">Services</h2>
-        </div> */}
-          <span
-            ref={counterRef}
-            className="hidden font-mono text-sm tabular-nums text-white/40 md:block"
-          >
-            01 / {pad(SERVICES.length)}
-          </span>
-        </div>
-
-        {/* scroll hint */}
-        <div
-          ref={hintRef}
-          className="pointer-events-none absolute bottom-8 left-6 z-20 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/40 md:left-12 lg:left-20"
-        >
-          <span>Scroll</span>
-          <span
-            className="inline-block animate-bounce"
-            style={{ transform: "rotate(90deg)" }}
-          >
-            →
-          </span>
-        </div>
-
-        {/* progress bar */}
-        {/* <div className="absolute inset-x-0 bottom-0 z-20 h-[3px] w-full bg-white/10">
-        <div
-          ref={progressFillRef}
-          className="h-full w-full origin-left scale-x-0 bg-white"
-        />
-      </div> */}
-
-        {/* the horizontally-translated track */}
+        {/* the auto-scrolling track */}
         <div
           ref={trackRef}
-          className="flex h-full w-full items-center "
+          className="flex gap-10 h-full w-max items-center will-change-transform"
         >
-          {SERVICES.map((service, i) => (
+          {loopedServices.map((service, i) => (
             <div
-              key={service.id}
+              key={`${service.id}-${i}`}
               ref={(el) => {
                 if (el) panelRefs.current[i] = el;
               }}
-              className="flex h-full w-[80%] shrink-0 flex-col justify-center px-6 md:w-[80%] md:px-10 lg:w-[60%] lg:px-14"
+              className="panel flex h-full w-[90vw] shrink-0 scale-75 flex-col justify-center md:w-[70vw] lg:w-[60vw]"
             >
-              <span className="font-mono text-xs text-white/30">
-                {service.index}
-              </span>
-              <h3
-                data-title
-                className="mt-2 max-w-md text-3xl font-black uppercase leading-[1.05] tracking-tight md:text-5xl"
-              >
-                {service.title}
-              </h3>
-              <p
-                data-desc
-                className="mt-4 max-w-sm text-sm text-white/60 md:text-base"
-              >
-                {service.description}
-              </p>
-
               <div
-                ref={(el) => {
-                  if (el) imageRefs.current[i] = el;
-                }}
-                className="relative mt-10 aspect-video w-[80%] cursor-pointer overflow-hidden rounded-2xl shadow-2xl shadow-black/60"
-                  style={{ transformOrigin: "50% 50%" }}
+                className="relative mt-10 aspect-video w-full overflow-hidden rounded-2xl "
+                style={{ transformOrigin: "50% 50%" }}
               >
+                <div className="w-full h-full absolute top-0 left-0 bg-[rgba(0,0,0,0.6)] flex justify-center items-center">
+                  <p className="font-black max-w-[50%] text-background text-center text-shadow-xl text-shadow-[rgba(0,0,0,.2)] text-2xl md:text-4xl lg:text-6xl uppercase tracking-tight text-wrap">
+                    {service.title}
+                  </p>
+                </div>
+
                 <Image
                   src={service.image}
                   width={700}
                   height={400}
                   alt={service.title}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover "
                   draggable={false}
                 />
               </div>
