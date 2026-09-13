@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
+import { getImageProps } from "next/image";
 
 const marqueeItems = [
   "Frontend Developer",
@@ -19,6 +20,33 @@ const Hero = () => {
   // Section A — visual (image + marquee)
   const marqueeTrackRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+
+  const common = {
+    alt: "Portrait of [Your Name]",
+    sizes: "40vw", // Matches your layout (40% of viewport width)
+  };
+
+  // 1. Generate props for the Desktop version (wider composition)
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({
+    ...common,
+    src: "/hero_desktop_2000px.avif", // Your wider, natural-looking desktop crop
+    width: 1200, // Use your export width
+    height: 1800, // Keep aspect ratio
+    quality: 85, // Higher quality for large screens
+  });
+
+  // 2. Generate props for the Mobile version (tighter crop on face)
+  const {
+    props: { srcSet: mobileSrcSet, ...rest },
+  } = getImageProps({
+    ...common,
+    src: "/hero_mobile_1000px.avif", // Your tighter, mobile-specific crop
+    width: 800, // Smaller export, closer to display size
+    height: 1200,
+    quality: 70, // Lower quality is fine for smaller screens
+  });
 
   useGSAP(
     () => {
@@ -51,34 +79,47 @@ const Hero = () => {
         ))}
       </div>
 
-<div
-  ref={imageRef}
-  className="relative z-20 h-screen w-full overflow-hidden flex justify-center"
->
-  <Image
-    src="/pbg5.png"
-    alt="Portrait illustration"
-    width={1664}
-    height={1024}
-    priority
-    sizes="100vw"
-    className="
+      <div
+        ref={imageRef}
+        className="relative z-20 h-screen w-full  flex justify-center"
+      >
+        {/* <div className="w-full md:w-full flex justify-center h-full absolute bg-red-600 bottom-0 "> */}
+          <Image
+            src="https://res.cloudinary.com/darxwbvff/image/upload/v1789307287/hero_desktop_2000px_uf3jsa.avif"
+            alt="Portrait illustration"
+            width={1664}
+            height={1024}
+            priority
+            sizes="100vw"
+            className="
       absolute
-      bottom-0
+      -bottom-8
       left-1/2
       -translate-x-1/2
       max-w-none
+        w-[175vw]
+      h-[100%]
 
-      /* Mobile */
-      w-[175vw]
-      h-[90%]
-
-      /* Desktop */
       md:w-auto
-      md:h-[90vh]
+      md:h-[100vh]
     "
-  />
-</div>
+          />
+        {/* </div> */}
+
+        {/* <picture
+          className="
+      absolute
+      bottom-0
+      left-1/2
+      -translate-x-1/2"
+        >
+          <source media="(min-width: 768px)" srcSet={desktopSrcSet} />
+
+          <source media="(max-width: 767px)" srcSet={mobileSrcSet} />
+
+          <img {...rest} style={{ width: "100%", height: "auto" }} />
+        </picture> */}
+      </div>
     </section>
   );
 };
