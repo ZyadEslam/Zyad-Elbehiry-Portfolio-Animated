@@ -50,7 +50,7 @@ export default function ServicesSection() {
         className=" px-[5%] text-text-primary bg-dark-bg "
       >
         <div className="flex flex-col md:h-screen justify-center">
-          <div className="flex justify-between text-zinc-500 mb-2">
+          <div className="flex justify-between text-zinc-500 mb-2 pt-12">
             <span>04</span>
             <span>(Services)</span>
             <span>2026</span>
