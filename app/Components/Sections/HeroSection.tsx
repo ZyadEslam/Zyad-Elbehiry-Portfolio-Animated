@@ -34,7 +34,7 @@ const Hero = () => {
     src: "/hero_desktop_2000px.avif", // Your wider, natural-looking desktop crop
     width: 1200, // Use your export width
     height: 1800, // Keep aspect ratio
-    quality: 85, // Higher quality for large screens
+    quality: 100, // Higher quality for large screens
   });
 
   // 2. Generate props for the Mobile version (tighter crop on face)
@@ -42,10 +42,10 @@ const Hero = () => {
     props: { srcSet: mobileSrcSet, ...rest },
   } = getImageProps({
     ...common,
-    src: "/hero_mobile_1000px.avif", // Your tighter, mobile-specific crop
-    width: 800, // Smaller export, closer to display size
-    height: 1200,
-    quality: 70, // Lower quality is fine for smaller screens
+    src: "/hero_desktop_2000px.avif", // Your tighter, mobile-specific crop
+    width: 1200, // Smaller export, closer to display size
+    height: 1800,
+    quality: 100, // Lower quality is fine for smaller screens
   });
 
   useGSAP(
@@ -84,26 +84,44 @@ const Hero = () => {
         className="relative z-20 h-screen w-full  flex justify-center"
       >
         {/* <div className="w-full md:w-full flex justify-center h-full absolute bg-red-600 bottom-0 "> */}
-          <Image
-            src="https://res.cloudinary.com/darxwbvff/image/upload/v1789307287/hero_desktop_2000px_uf3jsa.avif"
-            alt="Portrait illustration"
-            width={1664}
-            height={1024}
-            priority
-            sizes="100vw"
-            className="
+        
+        <picture  className="
       absolute
       -bottom-8
       left-1/2
       -translate-x-1/2
       max-w-none
         w-[175vw]
-      h-[100%]
 
       md:w-auto
-      md:h-[100vh]
+      md:h-screen
+    ">
+          <source media="(min-width: 768px)" srcSet={desktopSrcSet} />
+
+          <source media="(max-width: 767px)" srcSet={mobileSrcSet} />
+          
+          <img {...rest} alt={"Portrait illustration"} style={{ width: "100%", height: "auto" }} />
+        </picture>
+        
+        {/* <Image
+          src="https://res.cloudinary.com/darxwbvff/image/upload/v1789307287/hero_desktop_2000px_uf3jsa.avif"
+          alt="Portrait illustration"
+          width={1664}
+          height={1024}
+          priority
+          sizes="100vw"
+          className="
+      absolute
+      -bottom-8
+      left-1/2
+      -translate-x-1/2
+      max-w-none
+        w-[175vw]
+
+      md:w-auto
+      md:h-screen
     "
-          />
+        /> */}
         {/* </div> */}
 
         {/* <picture
