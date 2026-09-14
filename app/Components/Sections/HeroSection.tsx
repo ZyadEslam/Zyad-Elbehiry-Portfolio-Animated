@@ -83,31 +83,11 @@ const Hero = () => {
         ref={imageRef}
         className="relative z-20 h-screen w-full  flex justify-center"
       >
-        {/* <div className="w-full md:w-full flex justify-center h-full absolute bg-red-600 bottom-0 "> */}
-        
-        <picture  className="
-      absolute
-      -bottom-8
-      left-1/2
-      -translate-x-1/2
-      max-w-none
-        w-[175vw]
-
-      md:w-auto
-      md:h-screen
-    ">
-          <source media="(min-width: 768px)" srcSet={desktopSrcSet} />
-
-          <source media="(max-width: 767px)" srcSet={mobileSrcSet} />
-          
-          <img {...rest} alt={"Portrait illustration"} style={{ width: "100%", height: "auto" }} />
-        </picture>
-        
-        {/* <Image
+        <Image
           src="https://res.cloudinary.com/darxwbvff/image/upload/v1789307287/hero_desktop_2000px_uf3jsa.avif"
           alt="Portrait illustration"
-          width={1664}
-          height={1024}
+          width={1200}
+          height={1800}
           priority
           sizes="100vw"
           className="
@@ -116,27 +96,12 @@ const Hero = () => {
       left-1/2
       -translate-x-1/2
       max-w-none
-        w-[175vw]
+        w-[160vw]
 
       md:w-auto
       md:h-screen
     "
-        /> */}
-        {/* </div> */}
-
-        {/* <picture
-          className="
-      absolute
-      bottom-0
-      left-1/2
-      -translate-x-1/2"
-        >
-          <source media="(min-width: 768px)" srcSet={desktopSrcSet} />
-
-          <source media="(max-width: 767px)" srcSet={mobileSrcSet} />
-
-          <img {...rest} style={{ width: "100%", height: "auto" }} />
-        </picture> */}
+        />
       </div>
     </section>
   );
