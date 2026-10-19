@@ -29,8 +29,8 @@ export const projects: Project[] = [
       "https://res.cloudinary.com/darxwbvff/image/upload/v1792440498/Global_Robotics_Challenge__Innovation_Through_Collaboration_e5hhso.png",
     description:
       "A full-stack competition-management platform for robotics events, covering team registration, organization portals, order and payment workflows, live results, scoring, QR-based staff check-in, and a comprehensive admin dashboard. Built a bilingual Arabic/English experience with role-based access, CMS tools, secure document uploads, notifications, audit logs, coupon management, and public galleries/results. using Next.js 16, React 19, TypeScript, Tailwind CSS, Prisma, PostgreSQL, TanStack Query, JWT/Passport authentication, Zod, Paymob payments, Cloudflare R2, GSAP, next-intl, Docker, and Vitest.",
-    github: "https://github.com/ZyadEslam/Handmade-Educational-Toys",
-    demo: "https://handmade-educational-toys.vercel.app",
+    github: "https://github.com/ZyadEslam/GRC",
+    demo: "www.grc-championship.com/en",
   },
   {
     id: "01",
