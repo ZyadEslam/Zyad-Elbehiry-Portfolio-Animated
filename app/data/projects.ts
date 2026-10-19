@@ -72,18 +72,16 @@ export const projects: Project[] = [
   },
   {
     id: "05",
-    title: "Espesyal Fashion",
-    category:
-      "Next.js 15 - TypeScript - Tailwind CSS - NextAuth - MongoDB - Paymob",
+    title: "Graphic Designer's Portfolio",
+    category: "Next.js - Tailwind CSS - Framer Motion",
     year: "2025",
     image:
-      "https://res.cloudinary.com/darxwbvff/image/upload/v1779096306/ChatGPT_Image_May_16_2026_01_17_42_PM_ppgf8y.png",
+      "https://res.cloudinary.com/darxwbvff/image/upload/v1787070135/ChatGPT_Image_Aug_18_2026_07_21_47_PM_dhhxxn.png",
     description:
-      "Bilingual women's fashion e-commerce platform including authentication, secure checkout, admin dashboard, and real-time order management.",
-    github: "https://github.com/ZyadEslam/Espesyal-fashion",
-    demo: "https://espesyal-fashion.vercel.app/",
+      "Biblomania System is an internal web application for managing day-to-day bookstore operations: customer orders, multi-item book entries, shipping status, and expense tracking. It was designed for Arabic-speaking staff with an RTL-first UI and a visual language aligned with the Biblomania brand.",
+    github: "https://github.com/ZyadEslam/Biblomania-Store",
+    demo: "https://khaled-tantawy-s-portfolio.vercel.app/",
   },
-
   {
     id: "06",
     title: "Biblomania System — Store Operations Dashboard",
@@ -92,18 +90,6 @@ export const projects: Project[] = [
     year: "2025",
     image:
       "https://res.cloudinary.com/darxwbvff/image/upload/v1781622417/ChatGPT_Image_Jun_16_2026_06_06_36_PM_dtuyla.png",
-    description:
-      "Biblomania System is an internal web application for managing day-to-day bookstore operations: customer orders, multi-item book entries, shipping status, and expense tracking. It was designed for Arabic-speaking staff with an RTL-first UI and a visual language aligned with the Biblomania brand.",
-    github: "https://github.com/ZyadEslam/Biblomania-Store",
-    demo: "#",
-  },
-  {
-    id: "07",
-    title: "Graphic Designer's Portfolio",
-    category: "Next.js - Tailwind CSS - Framer Motion",
-    year: "2025",
-    image:
-      "https://res.cloudinary.com/darxwbvff/image/upload/v1787070135/ChatGPT_Image_Aug_18_2026_07_21_47_PM_dhhxxn.png",
     description:
       "Biblomania System is an internal web application for managing day-to-day bookstore operations: customer orders, multi-item book entries, shipping status, and expense tracking. It was designed for Arabic-speaking staff with an RTL-first UI and a visual language aligned with the Biblomania brand.",
     github: "https://github.com/ZyadEslam/Biblomania-Store",
