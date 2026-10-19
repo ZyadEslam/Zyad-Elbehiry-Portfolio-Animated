@@ -30,10 +30,10 @@ export const projects: Project[] = [
     description:
       "A full-stack competition-management platform for robotics events, covering team registration, organization portals, order and payment workflows, live results, scoring, QR-based staff check-in, and a comprehensive admin dashboard. Built a bilingual Arabic/English experience with role-based access, CMS tools, secure document uploads, notifications, audit logs, coupon management, and public galleries/results. using Next.js 16, React 19, TypeScript, Tailwind CSS, Prisma, PostgreSQL, TanStack Query, JWT/Passport authentication, Zod, Paymob payments, Cloudflare R2, GSAP, next-intl, Docker, and Vitest.",
     github: "https://github.com/ZyadEslam/GRC",
-    demo: "www.grc-championship.com/en",
+    demo: "https://www.grc-championship.com/en",
   },
   {
-    id: "01",
+    id: "02",
     title: "Handmade Educational Toys",
     category: "Next.js - React - TypeScript - Tailwind CSS",
     year: "2026",
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     demo: "https://handmade-educational-toys.vercel.app",
   },
   {
-    id: "01",
+    id: "03",
     title: "Powerpoint world",
     category:
       "Next.js - React - TypeScript - MongoDB - Mongoose - Paymob - SSR - SSG",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     demo: "https://powerpointworld.com/",
   },
   {
-    id: "03",
+    id: "04",
     title: "Military LAN Workforce Management System",
     category: "Product Design",
     year: "2026",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     demo: "#",
   },
   {
-    id: "02",
+    id: "05",
     title: "Espesyal Fashion",
     category:
       "Next.js 15 - TypeScript - Tailwind CSS - NextAuth - MongoDB - Paymob",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: "04",
+    id: "06",
     title: "Biblomania System — Store Operations Dashboard",
     category:
       "Next.js - React - MongoDB - Mongoose - Tailwind CSS - REST API - Arabic RTL",
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     demo: "#",
   },
   {
-    id: "05",
+    id: "07",
     title: "Graphic Designer's Portfolio",
     category: "Next.js - Tailwind CSS - Framer Motion",
     year: "2025",
