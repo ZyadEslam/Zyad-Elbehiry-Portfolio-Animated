@@ -21,9 +21,21 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "01",
-    title: "Handmade Educational Toys",
+    title: "Global Robotics Challenge Platform",
     category:
-      "Next.js - React - TypeScript - Tailwind CSS",
+      "Next.js - React - TypeScript - Tailwind CSS - Prisma - PostgreSQL - TanStack Query ",
+    year: "2026",
+    image:
+      "https://res.cloudinary.com/darxwbvff/image/upload/v1792440498/Global_Robotics_Challenge__Innovation_Through_Collaboration_e5hhso.png",
+    description:
+      "A full-stack competition-management platform for robotics events, covering team registration, organization portals, order and payment workflows, live results, scoring, QR-based staff check-in, and a comprehensive admin dashboard. Built a bilingual Arabic/English experience with role-based access, CMS tools, secure document uploads, notifications, audit logs, coupon management, and public galleries/results. using Next.js 16, React 19, TypeScript, Tailwind CSS, Prisma, PostgreSQL, TanStack Query, JWT/Passport authentication, Zod, Paymob payments, Cloudflare R2, GSAP, next-intl, Docker, and Vitest.",
+    github: "https://github.com/ZyadEslam/Handmade-Educational-Toys",
+    demo: "https://handmade-educational-toys.vercel.app",
+  },
+  {
+    id: "01",
+    title: "Handmade Educational Toys",
+    category: "Next.js - React - TypeScript - Tailwind CSS",
     year: "2026",
     image:
       "https://res.cloudinary.com/dnsmcrukw/image/upload/v1789297252/ChatGPT_Image_Sep_13_2026_02_00_05_PM_fqagt9.png",
